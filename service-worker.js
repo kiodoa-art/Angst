@@ -1,4 +1,4 @@
-const CACHE_NAME = 'angst-webapp-v3-locked-pwa-v1';
+const CACHE_NAME = 'angst-v3-kalibreret-20260618';
 const ASSETS = [
   './',
   './index.html',
