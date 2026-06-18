@@ -92,6 +92,20 @@
     .secondary:disabled{opacity:.35}
     .panicDone{border-color:#32d17d70;background:radial-gradient(circle at 50% 0,#12331f,#101018 56%,#08080d)}
 
+    .understandIntro{border-color:#ffffff22;background:linear-gradient(180deg,#15151feb,#0b0b10eb)}
+    .understandCard{border:1px solid #ffffff18;border-radius:20px;margin-bottom:12px;overflow:hidden;background:#ffffff06}
+    .understandCard summary{list-style:none;cursor:pointer;padding:16px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:900;font-size:18px}
+    .understandCard summary::-webkit-details-marker{display:none}
+    .understandCard summary span:first-child{display:flex;align-items:center;gap:10px}
+    .understandCard summary small{display:block;font-size:12px;font-weight:650;color:var(--muted);margin-top:2px}
+    .understandCard .chev{font-size:24px;opacity:.75;transition:transform .18s ease}
+    .understandCard[open] .chev{transform:rotate(90deg)}
+    .understandBody{padding:0 16px 16px;color:#eee;line-height:1.45}
+    .understandBody h4{margin:12px 0 6px;font-size:15px;color:currentColor}
+    .understandBody p{margin:0 0 10px;color:#eee}
+    .levelBox{border-left:3px solid currentColor;padding:8px 10px;margin:10px 0;background:#0004;border-radius:8px}
+    .pinkText{color:var(--pink)}.orangeText{color:var(--orange)}.cyanText{color:var(--cyan)}
+
   </style>
 </head>
 <body>
@@ -121,13 +135,6 @@
           <button class="hotspot" style="left:88.6%;top:59.3%;color:var(--orange)" data-id="blaere" aria-label="Blærepres tissetrang"></button>
           <button class="hotspot" style="left:84.2%;top:74.2%;color:var(--pink)" data-id="summen" aria-label="Summende fornemmelse"></button>
         </div></div>
-        <div class="toolbar">
-          <div class="quick">
-            <button class="pink" data-info="kognitiv"><span>🧠</span><div>Kognitiv / sanseforstyrrelser<br><small class="muted">Hjerne, sanser, dissociation</small></div>›</button>
-            <button class="orange" data-info="glatte"><span>🫁</span><div>Glatte muskulaturer<br><small class="muted">Organer og indre systemer</small></div>›</button>
-            <button class="cyan" data-info="tvaer"><span>💪</span><div>Tværstribede muskulaturer<br><small class="muted">Muskler og bevægeapparat</small></div>›</button>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -156,6 +163,53 @@
       </div>
     </section>
 
+
+    <section id="understanding" class="section">
+      <div class="card understandIntro">
+        <h2>Forstå symptomerne</h2>
+        <p>Angst kan ramme forskellige systemer i kroppen. Her er den korte, brugbare forklaring bag de tre hovedområder.</p>
+      </div>
+
+      <details class="understandCard pinkText" open>
+        <summary><span>🧠 <span>Kognitiv / sanseforstyrrelser<small>Hjerne, sanser, hukommelse og dissociation</small></span></span><span class="chev">›</span></summary>
+        <div class="understandBody">
+          <div class="levelBox"><strong>Typisk ved høj belastning:</strong> sløret syn, synstab, tunnelsyn, midlertidig blindhed, nedsat hørelse eller høretab, hallucinationer i alle sanser, hukommelsestab, mental uro/forvirring, bevidsthedstab, pseudoanfald, dissociation, svimmelhed, føleforstyrrelser, brændende prikken/summen i ekstremiteter og besvimelse.</div>
+          <h4>Nervesystem</h4>
+          <p>Autonomt og parasympatisk. Kroppen kan både gå i alarm og i nedlukning.</p>
+          <h4>Modstandssystem</h4>
+          <p>Projektion og splitting, projektiv identifikation, benægtelse, dissociation og acting out. Sagt mere jordnært: hjernen forsøger at beskytte sig mod noget, der føles for overvældende.</p>
+          <h4>Gør her og nu</h4>
+          <p>Brug grounding. Kig rundt, nævn hvor du er, og find fem konkrete ting i rummet.</p>
+        </div>
+      </details>
+
+      <details class="understandCard orangeText">
+        <summary><span>🫁 <span>Glatte muskulaturer<small>Organer, blodkar, tarm, blære og vejrtrækning</small></span></span><span class="chev">›</span></summary>
+        <div class="understandBody">
+          <div class="levelBox"><strong>Typisk ved mild til høj belastning:</strong> migrænehovedpine, astma-/kvælningfornemmelse, reflux, funktionel opkast, irritabel tyktarm, uforklarlige mavesmerter, blæreproblemer, betændelseslignende uro i mave-tarmsystemet, hypertension og i svære tilfælde hypertension med bevidsthedstab.</div>
+          <h4>Nervesystem</h4>
+          <p>Autonomt og parasympatisk. Det er de automatiske systemer, som man ikke bare kan “tage sig sammen” og styre direkte.</p>
+          <h4>Modstandssystem</h4>
+          <p>Repression, somatisering, omvendelse, træthed, depression og selvangreb. Kroppen kan komme til at udtrykke det, psyken ikke kan få reguleret.</p>
+          <h4>Gør her og nu</h4>
+          <p>Lav langsom udånding. Pust længere ud end du trækker ind. Det dæmper alarmresponsen.</p>
+        </div>
+      </details>
+
+      <details class="understandCard cyanText">
+        <summary><span>💪 <span>Tværstribede muskulaturer<small>Muskler, kæbe, nakke, ryg, ben og hænder</small></span></span><span class="chev">›</span></summary>
+        <div class="understandBody">
+          <div class="levelBox"><strong>Typisk ved lav til moderat belastning:</strong> kæbespændinger, spændingshovedpine, ondt i nakken, brystspænding, stakåndethed, svært ved at få vejret, muskelsmerter i mave, side, lænd og ryg, tics, fibromyalgi-lignende smerter, ledsmerter, bensmerter, kramper og tremor/rysten på hænder.</div>
+          <h4>Nervesystem</h4>
+          <p>Somatisk og sympatisk. Kroppen gør sig klar til kamp eller flugt.</p>
+          <h4>Modstandssystem</h4>
+          <p>Isolation af affekt, rationalisering, intellektualisering, afledning, generalisering og rumination. Kort sagt: hovedet kører, mens kroppen spænder op.</p>
+          <h4>Gør her og nu</h4>
+          <p>Prøv “spænd og slip”: spænd en muskelgruppe i 5 sekunder og slip i 10 sekunder.</p>
+        </div>
+      </details>
+    </section>
+
     <section id="help" class="section">
       <div class="card"><h2>Angst eller sygdom?</h2><p>Angst kan give voldsomme kropslige symptomer. Det betyder ikke automatisk, at noget er farligt. Men nye, kraftige eller vedvarende symptomer skal ikke bare bortforklares.</p></div>
       <div class="card"><h3 class="safe">Ofte angstrelateret</h3><p>Symptomer kommer i bølger, skifter placering, tiltager ved bekymring og aftager når kroppen falder til ro.</p></div>
@@ -173,7 +227,7 @@
   <button class="active" data-section="home"><b>🧍</b>Symptomer</button>
   <button data-section="panic"><b>🆘</b>Akut</button>
   <button data-section="exercises"><b>🫁</b>Øvelser</button>
-  <button data-section="help"><b>⚕️</b>Hjælp</button>
+  <button data-section="understanding"><b>📚</b>Forstå</button>
   <button data-section="tracker"><b>✓</b>Tracker</button>
 </nav>
 
@@ -366,7 +420,7 @@ updateInstallButton();
 
     window.addEventListener('load', async () => {
       try {
-        const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260618-01', { updateViaCache: 'none' });
+        const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260618-02', { updateViaCache: 'none' });
 
         const forceNewWorker = worker => {
           if (!worker) return;

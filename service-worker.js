@@ -1,4 +1,4 @@
-const CACHE_NAME = 'angst-v4-auto-update-20260618-01';
+const CACHE_NAME = 'angst-v4-forstaaelse-20260618-02';
 const ASSETS = [
   './',
   './index.html',
