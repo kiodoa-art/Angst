@@ -22,7 +22,7 @@
     *{box-sizing:border-box} html,body{margin:0;background:#000;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif} body{min-height:100svh}
     .shell{width:min(100%,460px);margin:0 auto;background:radial-gradient(circle at 50% 10%,#1a101e 0,#05060a 35%,#000 100%);min-height:100svh;padding-bottom:88px;box-shadow:0 0 80px #000}
     header{position:sticky;top:0;z-index:10;background:linear-gradient(#05060af5,#05060ada 78%,#05060a00);padding:calc(env(safe-area-inset-top) + 18px) 18px 14px;border-bottom:1px solid #ffffff10;backdrop-filter:blur(10px)}
-    .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.brand h1{margin:0;font-size:48px;line-height:.9;letter-spacing:.08em;font-weight:900;background:linear-gradient(90deg,var(--pink),#ff6b6b,var(--orange));-webkit-background-clip:text;color:transparent}.brand p{margin:12px 0 0;font-size:20px;letter-spacing:.32em;color:#fff}.about{border:1px solid #ffffff33;border-radius:999px;padding:10px 14px;color:#fff;background:#ffffff08;font-size:15px;white-space:nowrap}.hint{font-size:13px;color:var(--muted);text-align:center;margin:10px 18px 0}
+    .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.topActions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}.installBtn{display:none;border:1px solid #00e6e655;border-radius:999px;padding:10px 14px;color:#fff;background:#00e6e612;font-size:15px;white-space:nowrap}.installBtn.show{display:inline-flex;align-items:center;gap:6px}.brand h1{margin:0;font-size:48px;line-height:.9;letter-spacing:.08em;font-weight:900;background:linear-gradient(90deg,var(--pink),#ff6b6b,var(--orange));-webkit-background-clip:text;color:transparent}.brand p{margin:12px 0 0;font-size:20px;letter-spacing:.32em;color:#fff}.about{border:1px solid #ffffff33;border-radius:999px;padding:10px 14px;color:#fff;background:#ffffff08;font-size:15px;white-space:nowrap}.hint{font-size:13px;color:var(--muted);text-align:center;margin:10px 18px 0}
     main{padding:0 0 18px}.stage-wrap{padding:0;display:flex;justify-content:center}.stage{position:relative;width:100%;max-width:460px;aspect-ratio:795/1536;background:#000;overflow:hidden}.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}.hotspot{position:absolute;width:11.5%;aspect-ratio:1;border-radius:50%;border:0;background:transparent;transform:translate(-50%,-50%);cursor:pointer}.hotspot::after{content:"";position:absolute;inset:-8%;border-radius:50%;background:transparent}.hotspot:focus-visible{outline:3px solid #fff;outline-offset:2px}.hotspot.active{box-shadow:0 0 0 2px #fff8,0 0 25px currentColor;border-radius:50%}
     .toolbar{padding:12px 14px 0}.quick{display:grid;grid-template-columns:1fr;gap:10px}.quick button{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 16px;border-radius:18px;background:#ffffff08;color:#fff;border:1px solid #ffffff22;text-align:left;font-size:17px;font-weight:750}.quick span{font-size:28px}.pink{border-color:#ff3aa680!important;color:var(--pink)}.cyan{border-color:#00e6e680!important;color:var(--cyan)}.orange{border-color:#ff8a0080!important;color:var(--orange)}
     .section{display:none;padding:16px 16px 0}.section.active{display:block}.card{border:1px solid #ffffff18;background:linear-gradient(180deg,#15151fe8,#0b0b10e8);border-radius:var(--radius);padding:16px;margin-bottom:12px}.card h2,.card h3{margin:0 0 10px}.card p{color:#ddd;line-height:1.45}.list{display:grid;gap:10px}.exercise{border:1px solid #ffffff18;border-radius:18px;padding:14px;background:#ffffff07}.exercise button,.primary{margin-top:10px;border:1px solid #ffffff30;background:#ffffff10;color:#fff;border-radius:999px;padding:10px 14px;font-weight:700}.breathCircle{width:180px;height:180px;border-radius:50%;border:2px solid var(--cyan);margin:18px auto;display:grid;place-items:center;font-size:24px;box-shadow:0 0 28px #00e6e655;transition:transform 4s ease}.breathCircle.big{transform:scale(1.25)}
@@ -34,6 +34,8 @@
     .modal::-webkit-scrollbar-track{background:#ffffff10;border-radius:999px;margin:14px 0}
     .modal::-webkit-scrollbar-thumb{background:currentColor;border-radius:999px;border:3px solid #15151e}
     .modal::-webkit-scrollbar-thumb:hover{background:#fff}
+
+    .breathPopup{text-align:center;padding-bottom:4px}.breathPopup .actionRow{justify-content:center}
 
     @media (min-width:760px){.shell{max-width:1050px;width:min(100%,1050px)}header{padding-left:32px;padding-right:32px}.layout{display:grid;grid-template-columns:460px 1fr;align-items:start;gap:22px;padding:0 26px}.stage{border-radius:0}.toolbar{padding-top:20px}.quick{grid-template-columns:1fr}.bottomnav{width:min(100%,1050px)}.section{padding:20px 26px 0}.brand h1{font-size:54px}}
 
@@ -66,7 +68,7 @@
       .brand h1{font-size:48px}
     }
     @media (max-width:380px){
-      .brand h1{font-size:42px}.brand p{font-size:17px}.about{font-size:13px;padding:9px 11px}
+      .brand h1{font-size:42px}.brand p{font-size:17px}.about,.installBtn{font-size:13px;padding:9px 11px}
       .modal{max-height:50svh}.bottomnav button{font-size:11px}
     }
 
@@ -95,7 +97,7 @@
 <body>
 <div class="shell">
   <header>
-    <div class="top"><div class="brand"><h1>ANGST</h1><p>KROPPENS<br>REAKTIONER</p></div><button class="about" data-section="help">ⓘ Om angst</button></div>
+    <div class="top"><div class="brand"><h1>ANGST</h1><p>KROPPENS<br>REAKTIONER</p></div><div class="topActions"><button class="about" data-section="help">ⓘ Om angst</button><button class="installBtn" id="installBtn" type="button">📲 Installér</button></div></div>
     <div class="hint">Tryk på ikonerne på kroppen for uddybning og konkrete råd.</div><button class="panicBtn" data-section="panic">🆘 Jeg har et angstanfald lige nu</button>
   </header>
   <main>
@@ -213,7 +215,11 @@ function openInfo(obj,id){document.querySelectorAll('.hotspot').forEach(h=>{if(!
 
 document.querySelectorAll('.hotspot').forEach(btn=>btn.addEventListener('click',()=>openSymptom(btn.dataset.id)));
 document.querySelectorAll('[data-info]').forEach(btn=>btn.addEventListener('click',()=>openInfo(groups[btn.dataset.info])));
-function closeModal(){document.getElementById('modal').close();document.querySelectorAll('.hotspot').forEach(h=>h.classList.remove('active'))}
+function closeModal(){
+  clearInterval(breathTimer);
+  document.getElementById('modal').close();
+  document.querySelectorAll('.hotspot').forEach(h=>h.classList.remove('active'));
+}
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
 function showSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.bottomnav button').forEach(b=>b.classList.toggle('active',b.dataset.section===id));if(id==='panic'){panicIndex=0;renderPanicStep();window.scrollTo({top:0,behavior:'smooth'})}else{window.scrollTo({top:0,behavior:'smooth'})}}
 
@@ -250,7 +256,41 @@ function prevPanicStep(){
 document.querySelectorAll('[data-section]').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.section)));
 function runExercise(type){closeModal(); if(type==='breath') startBreath('Langsom udånding',4,7); else openExercise(type)}
 function openExercise(type){const data={grounding:{c:'cyan',cat:'Øvelse',title:'5-4-3-2-1 grounding',feel:'Bruges når kroppen er i alarm, ved dissociation eller tankemylder.',why:'Øvelsen flytter opmærksomheden fra indre trusselsscanning til konkret sansning.',now:'5 ting du kan se. 4 ting du kan mærke. 3 ting du kan høre. 2 ting du kan lugte. 1 ting du kan smage.',react:'Hvis du bliver mere frakoblet eller utryg, så søg kontakt til en anden person.'},muscle:{c:'cyan',cat:'Øvelse',title:'Spænd og slip',feel:'Bruges ved uro, spænding, knyttede hænder eller kropslig alarm.',why:'Når musklerne først spændes bevidst og derefter slippes, kan kroppen registrere forskellen.',now:'Spænd hænder 5 sekunder, slip 10. Spænd skuldre 5, slip 10. Spænd ben 5, slip 10. Gentag.',react:'Undgå øvelsen ved skade eller stærke smerter.'}};openInfo(data[type])}
-let breathTimer=null;function startBreath(title,inn,out){showSection('exercises');clearInterval(breathTimer);document.getElementById('breathBox').style.display='block';document.getElementById('breathTitle').textContent=title;const c=document.getElementById('breathCircle'),t=document.getElementById('breathText');let phase=0;function step(){if(phase%2===0){c.textContent='Ind '+inn+' sek';c.classList.add('big');t.textContent='Træk vejret roligt ind gennem næsen.'}else{c.textContent='Ud '+out+' sek';c.classList.remove('big');t.textContent='Pust langsomt ud gennem munden. Udåndingen må gerne være længere.'}phase++}step();breathTimer=setInterval(step,(inn+out)*500)}
+let breathTimer=null;
+function startBreath(title,inn,out){
+  showSection('exercises');
+  clearInterval(breathTimer);
+  const box=document.getElementById('modalBox');
+  box.style.color='var(--cyan)';
+  document.getElementById('badge').textContent='Vejrtrækning';
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalContent').innerHTML=`
+    <div class="breathPopup">
+      <div class="breathCircle" id="breathCircleLive">Klar</div>
+      <p class="muted" id="breathTextLive">Start med at sænke skuldrene.</p>
+      <div class="actionRow">
+        <button class="miniBtn" onclick="startBreath('${title}',${inn},${out})">Start forfra</button>
+        <button class="miniBtn" onclick="closeModal()">Stop</button>
+      </div>
+    </div>`;
+  document.getElementById('modal').showModal();
+  const c=document.getElementById('breathCircleLive'),t=document.getElementById('breathTextLive');
+  let phase=0;
+  function step(){
+    if(phase%2===0){
+      c.textContent='Ind '+inn+' sek';
+      c.classList.add('big');
+      t.textContent='Træk vejret roligt ind gennem næsen.';
+    }else{
+      c.textContent='Ud '+out+' sek';
+      c.classList.remove('big');
+      t.textContent='Pust langsomt ud gennem munden. Udåndingen må gerne være længere.';
+    }
+    phase++;
+  }
+  step();
+  breathTimer=setInterval(step,(inn+out)*500);
+}
 const trackNames=Object.entries(symptoms).map(([id,o])=>[id,o.title.split(':')[0]]);const grid=document.getElementById('trackerGrid');trackNames.forEach(([id,name])=>{const lab=document.createElement('label');lab.className='check';lab.innerHTML=`<input type="checkbox" value="${id}"><span>${name}</span>`;grid.appendChild(lab)});function saveTracker(){const checked=[...grid.querySelectorAll('input:checked')].map(i=>i.value);const all=JSON.parse(localStorage.getItem('angstTracker')||'[]');all.push({date:new Date().toISOString().slice(0,10),items:checked});localStorage.setItem('angstTracker',JSON.stringify(all));const counts={};all.flatMap(x=>x.items).forEach(i=>counts[i]=(counts[i]||0)+1);const top=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([id,n],idx)=>`${idx+1}. ${symptoms[id].title} (${n})`).join('\n')||'Ingen registreringer endnu.';document.getElementById('trackerResult').textContent=`Gemt.\n\nHyppigste symptomer på denne enhed:\n${top}`}
 
 const exerciseCatalog={breath:{name:'Langsom udånding',run:"startBreath('Langsom udånding',4,7)"},grounding:{name:'5-4-3-2-1 grounding',run:"openExercise('grounding')"},muscle:{name:'Spænd og slip',run:"openExercise('muscle')"}};
@@ -258,6 +298,59 @@ function getFavs(){return JSON.parse(localStorage.getItem('angstFavs')||'[]')}
 function toggleFavorite(id){let favs=getFavs();favs=favs.includes(id)?favs.filter(x=>x!==id):[...favs,id];localStorage.setItem('angstFavs',JSON.stringify(favs));renderFavs()}
 function renderFavs(){const el=document.getElementById('favList');if(!el)return;const favs=getFavs();if(!favs.length){el.innerHTML='<p class="muted">Ingen favoritter endnu.</p>';return}el.innerHTML=favs.map(id=>`<div class="favItem"><span>⭐ ${exerciseCatalog[id].name}</span><button class="miniBtn" onclick="${exerciseCatalog[id].run}">Start</button></div>`).join('')}
 renderFavs();
+
+
+// PWA install-knap: vises kun i browser og skjules automatisk når appen er installeret
+let deferredInstallPrompt = null;
+const installBtn = document.getElementById('installBtn');
+function isStandaloneApp(){
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+function updateInstallButton(){
+  if(!installBtn) return;
+  if(isStandaloneApp()){
+    installBtn.classList.remove('show');
+    installBtn.style.display = 'none';
+    return;
+  }
+  // På Android/Chrome vises knappen kun når browseren melder at appen kan installeres.
+  // På iPhone vises den som vejledning, fordi iOS ikke giver en direkte install-dialog.
+  const isiOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(deferredInstallPrompt || isiOS){
+    installBtn.style.display = '';
+    installBtn.classList.add('show');
+  } else {
+    installBtn.classList.remove('show');
+  }
+}
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  updateInstallButton();
+});
+window.addEventListener('appinstalled', () => {
+  deferredInstallPrompt = null;
+  updateInstallButton();
+});
+window.matchMedia('(display-mode: standalone)').addEventListener?.('change', updateInstallButton);
+installBtn?.addEventListener('click', async () => {
+  if(isStandaloneApp()) return updateInstallButton();
+  if(deferredInstallPrompt){
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice.catch(()=>{});
+    deferredInstallPrompt = null;
+    updateInstallButton();
+    return;
+  }
+  const isiOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(isiOS){
+    openInfo({c:'cyan',cat:'Installér',title:'Installér på iPhone',feel:'Tryk på del-knappen i Safari.',why:'Vælg “Føj til hjemmeskærm”.',now:'Åbn derefter appen fra ikonet på din hjemmeskærm.',react:'Når appen er åbnet fra hjemmeskærmen, forsvinder Installér-knappen automatisk.'});
+  } else {
+    openInfo({c:'cyan',cat:'Installér',title:'Installér appen',feel:'Brug browserens menu.',why:'Vælg “Installér app” eller “Føj til startskærm”.',now:'Når den er installeret, kan den åbnes som en almindelig app.',react:'Installér-knappen skjules automatisk, når appen åbnes som installeret app.'});
+  }
+});
+updateInstallButton();
+
 </script>
 
 <script>
