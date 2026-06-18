@@ -77,6 +77,19 @@
     @keyframes slideUp{from{transform:translateY(20px);opacity:.6}to{transform:translateY(0);opacity:1}}
     .actionRow{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.miniBtn{border:1px solid #ffffff2b;background:#ffffff0d;color:#fff;border-radius:999px;padding:9px 12px;font-weight:750}.miniBtn.starred{border-color:#ffd166;color:#ffd166}.related{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.related button{border:1px solid currentColor;background:#ffffff09;color:inherit;border-radius:999px;padding:8px 10px;font-weight:700}.stepList{display:grid;gap:10px;counter-reset:step}.step{display:flex;gap:10px;align-items:flex-start;border:1px solid #ffffff18;border-radius:16px;padding:12px;background:#ffffff07}.step b{display:grid;place-items:center;min-width:28px;height:28px;border-radius:50%;background:#ffffff14;color:#fff}.panicCard{border-color:#ff4f6155;background:linear-gradient(180deg,#240910,#0b0b10)}.favList{display:grid;gap:8px}.favItem{display:flex;justify-content:space-between;gap:8px;align-items:center;border:1px solid #ffffff18;border-radius:14px;padding:10px;background:#ffffff07}.favItem button{margin:0}
 
+    .panicStepper{text-align:center;border-color:#ff4f6155;background:radial-gradient(circle at 50% 0,#32101a,#101018 56%,#08080d);padding:18px}
+    .panicProgress{display:grid;gap:8px;margin-bottom:14px;color:#ffbdc6;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .panicProgress div{height:7px;background:#ffffff14;border-radius:999px;overflow:hidden}
+    .panicProgress i{display:block;height:100%;width:16.666%;border-radius:999px;background:linear-gradient(90deg,#ff4f61,var(--pink));box-shadow:0 0 18px #ff3aa680;transition:width .25s ease}
+    .panicIllustration{width:138px;height:138px;margin:8px auto 16px;border-radius:34px;display:grid;place-items:center;font-size:70px;background:linear-gradient(180deg,#ffffff10,#ffffff05);border:1px solid #ffffff20;box-shadow:0 0 35px #ff3aa625}
+    .panicStepper h2{font-size:25px;line-height:1.1;margin:4px 0 12px}
+    .panicStepper p{font-size:18px;line-height:1.45;margin:0;color:#f3f3f6}
+    .panicHint{margin:16px 0 0;padding:12px;border-radius:16px;background:#0006;border:1px solid #ffffff14;color:#cfd0d8;line-height:1.35}
+    .panicControls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+    .secondary{margin-top:10px;border:1px solid #ffffff25;background:#ffffff08;color:#fff;border-radius:999px;padding:10px 14px;font-weight:800}
+    .secondary:disabled{opacity:.35}
+    .panicDone{border-color:#32d17d70;background:radial-gradient(circle at 50% 0,#12331f,#101018 56%,#08080d)}
+
   </style>
 </head>
 <body>
@@ -128,13 +141,17 @@
     </section>
 
     <section id="panic" class="section">
-      <div class="card"><div class="stepList">
-        <div class="step" id="panicStep1"><b>1</b><div><strong>Fødder i gulvet</strong><br><span class="muted">Pres begge fødder ned. Mærk underlaget.</span></div></div>
-        <div class="step"><b>2</b><div><strong>Sig hvor du er</strong><br><span class="muted">“Jeg er her. Det er angst. Det er ubehageligt, men det går over.”</span></div></div>
-        <div class="step"><b>3</b><div><strong>Pust længere ud</strong><br><span class="muted">Ind 4 sekunder. Ud 7 sekunder. Gentag 8 gange.</span></div></div>
-        <div class="step"><b>4</b><div><strong>Find 5 ting</strong><br><span class="muted">Nævn 5 ting du kan se. Sig dem højt hvis du kan.</span></div></div>
-        <div class="step"><b>5</b><div><strong>Kontakt nogen</strong><br><span class="muted">Hvis du føler dig utryg eller ikke kan falde til ro, så ring til en person du stoler på eller søg hjælp.</span></div></div>
-      </div><button class="primary" onclick="startBreath('Akut rolig vejrtrækning',4,7)">Start vejrtrækning</button></div>
+      <div class="panicStepper card" id="panicStepper">
+        <div class="panicProgress"><span id="panicCounter">Trin 1 af 6</span><div><i id="panicBar"></i></div></div>
+        <div class="panicIllustration" id="panicIcon">🦶</div>
+        <h2 id="panicTitle">Sæt fødderne i gulvet</h2>
+        <p id="panicText">Pres begge fødder roligt ned i gulvet. Mærk hælene, tæerne og underlaget. Du skal ikke løse noget lige nu.</p>
+        <div class="panicHint" id="panicHint">Bliv her i 10 sekunder før du går videre.</div>
+        <div class="panicControls">
+          <button class="secondary" id="panicBack" onclick="prevPanicStep()">Tilbage</button>
+          <button class="primary" id="panicNext" onclick="nextPanicStep()">Næste</button>
+        </div>
+      </div>
     </section>
 
     <section id="help" class="section">
@@ -198,7 +215,38 @@ document.querySelectorAll('.hotspot').forEach(btn=>btn.addEventListener('click',
 document.querySelectorAll('[data-info]').forEach(btn=>btn.addEventListener('click',()=>openInfo(groups[btn.dataset.info])));
 function closeModal(){document.getElementById('modal').close();document.querySelectorAll('.hotspot').forEach(h=>h.classList.remove('active'))}
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
-function showSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.bottomnav button').forEach(b=>b.classList.toggle('active',b.dataset.section===id));if(id==='panic'){setTimeout(()=>document.getElementById('panicStep1')?.scrollIntoView({behavior:'smooth',block:'center'}),60)}else{window.scrollTo({top:0,behavior:'smooth'})}}
+function showSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.bottomnav button').forEach(b=>b.classList.toggle('active',b.dataset.section===id));if(id==='panic'){panicIndex=0;renderPanicStep();window.scrollTo({top:0,behavior:'smooth'})}else{window.scrollTo({top:0,behavior:'smooth'})}}
+
+const panicSteps=[
+  {icon:'🦶',title:'Sæt fødderne i gulvet',text:'Pres begge fødder roligt ned i gulvet. Mærk hælene, tæerne og underlaget. Du skal ikke løse noget lige nu.',hint:'Bliv her i 10 sekunder før du går videre.'},
+  {icon:'👀',title:'Kig dig langsomt omkring',text:'Find én ting i rummet og beskriv den konkret: farve, form, størrelse og hvor den står.',hint:'Det hjælper hjernen væk fra alarm og tilbage til nutiden.'},
+  {icon:'🫁',title:'Pust længere ud',text:'Træk vejret ind gennem næsen i 4 sekunder. Pust ud gennem munden i 7 sekunder. Gentag tre gange.',hint:'Lang udånding fortæller nervesystemet, at du ikke skal kæmpe eller flygte.'},
+  {icon:'🖐️',title:'Mærk noget fysisk',text:'Tryk tommelfingeren mod hver finger én ad gangen. Eller hold om en kop, en nøgle eller stoffet i dit tøj.',hint:'Kroppen forstår konkrete sanser bedre end lange forklaringer.'},
+  {icon:'🧠',title:'Sæt ord på det',text:'Sig stille: “Det her er angst. Det er ubehageligt, men ikke farligt. Det topper og falder igen.”',hint:'Du skal ikke diskutere med angsten. Du skal bare navngive den.'},
+  {icon:'🤝',title:'Vælg næste lille handling',text:'Drik lidt vand, sæt dig et roligere sted, skriv til nogen, eller bliv siddende og gentag vejrtrækningen.',hint:'Hvis du føler dig utryg, har brystsmerter, besvimer eller symptomerne er nye og voldsomme, så søg hjælp.'}
+];
+let panicIndex=0;
+function renderPanicStep(){
+  const step=panicSteps[panicIndex];
+  const total=panicSteps.length;
+  const done=panicIndex===total-1;
+  document.getElementById('panicCounter').textContent=`Trin ${panicIndex+1} af ${total}`;
+  document.getElementById('panicBar').style.width=`${((panicIndex+1)/total)*100}%`;
+  document.getElementById('panicIcon').textContent=step.icon;
+  document.getElementById('panicTitle').textContent=step.title;
+  document.getElementById('panicText').textContent=step.text;
+  document.getElementById('panicHint').textContent=step.hint;
+  document.getElementById('panicBack').disabled=panicIndex===0;
+  document.getElementById('panicNext').textContent=done?'Start forfra':'Næste';
+  document.getElementById('panicStepper').classList.toggle('panicDone',done);
+}
+function nextPanicStep(){
+  if(panicIndex < panicSteps.length-1){panicIndex++;renderPanicStep()}else{panicIndex=0;renderPanicStep()}
+}
+function prevPanicStep(){
+  if(panicIndex>0){panicIndex--;renderPanicStep()}
+}
+
 document.querySelectorAll('[data-section]').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.section)));
 function runExercise(type){closeModal(); if(type==='breath') startBreath('Langsom udånding',4,7); else openExercise(type)}
 function openExercise(type){const data={grounding:{c:'cyan',cat:'Øvelse',title:'5-4-3-2-1 grounding',feel:'Bruges når kroppen er i alarm, ved dissociation eller tankemylder.',why:'Øvelsen flytter opmærksomheden fra indre trusselsscanning til konkret sansning.',now:'5 ting du kan se. 4 ting du kan mærke. 3 ting du kan høre. 2 ting du kan lugte. 1 ting du kan smage.',react:'Hvis du bliver mere frakoblet eller utryg, så søg kontakt til en anden person.'},muscle:{c:'cyan',cat:'Øvelse',title:'Spænd og slip',feel:'Bruges ved uro, spænding, knyttede hænder eller kropslig alarm.',why:'Når musklerne først spændes bevidst og derefter slippes, kan kroppen registrere forskellen.',now:'Spænd hænder 5 sekunder, slip 10. Spænd skuldre 5, slip 10. Spænd ben 5, slip 10. Gentag.',react:'Undgå øvelsen ved skade eller stærke smerter.'}};openInfo(data[type])}
