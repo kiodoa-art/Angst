@@ -1,4 +1,4 @@
-const CACHE_NAME = 'angst-v3-kalibreret-20260618';
+const CACHE_NAME = 'angst-v4-psykoedukation-20260618';
 const ASSETS = [
   './',
   './index.html',
