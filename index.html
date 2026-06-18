@@ -354,9 +354,37 @@ updateInstallButton();
 </script>
 
 <script>
-  if ('serviceWorker'  in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js').catch(() => {});
+  // Aggressiv PWA-opdatering: tjekker ny version ved åbning og genindlæser automatisk én gang.
+  if ('serviceWorker' in navigator) {
+    let refreshing = false;
+
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshing) return;
+      refreshing = true;
+      window.location.reload();
+    });
+
+    window.addEventListener('load', async () => {
+      try {
+        const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260618-01', { updateViaCache: 'none' });
+
+        const forceNewWorker = worker => {
+          if (!worker) return;
+          worker.addEventListener('statechange', () => {
+            if (worker.state === 'installed' && navigator.serviceWorker.controller) {
+              worker.postMessage({ type: 'SKIP_WAITING' });
+            }
+          });
+        };
+
+        reg.addEventListener('updatefound', () => forceNewWorker(reg.installing));
+
+        // Tjek straks efter ny version ved hver åbning.
+        await reg.update().catch(() => {});
+
+        // Tjek igen efter kort tid, hvis browseren først henter filerne langsomt.
+        setTimeout(() => reg.update().catch(() => {}), 3000);
+      } catch (e) {}
     });
   }
 </script>
