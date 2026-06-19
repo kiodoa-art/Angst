@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-  <title>Angst – kroppens reaktioner V4</title>
-  <!-- V4: kalibreret mobil-PWA med panikknap, relaterede symptomer og favoritter -->
+  <title>Angst – kroppens reaktioner V5</title>
+  <!-- V5: patientvendt fagsprog, forebyggelsesafsnit og hjælpenumre -->
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#05060a">
   <meta name="mobile-web-app-capable" content="yes">
@@ -93,6 +93,10 @@
     .panicDone{border-color:#32d17d70;background:radial-gradient(circle at 50% 0,#12331f,#101018 56%,#08080d)}
 
     .understandIntro{border-color:#ffffff22;background:linear-gradient(180deg,#15151feb,#0b0b10eb)}
+    .subtabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+    .subtab{border:1px solid #ffffff22;background:#ffffff08;color:var(--muted);border-radius:14px;padding:11px 8px;font-weight:800;font-size:14px}
+    .subtab.active{background:#ffffff14;color:#fff;border-color:#ffffff40}
+    .subsection{display:none}.subsection.active{display:block}
     .understandCard{border:1px solid #ffffff18;border-radius:20px;margin-bottom:12px;overflow:hidden;background:#ffffff06}
     .understandCard summary{list-style:none;cursor:pointer;padding:16px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:900;font-size:18px}
     .understandCard summary::-webkit-details-marker{display:none}
@@ -118,7 +122,7 @@
     <section id="home" class="section active" style="padding:0">
       <div class="layout">
         <div class="stage-wrap"><div class="stage" id="stage"><img src="krop-ikoner.png" alt="Illustration af en krop med 16 klikbare punkter for angstsymptomer. Brug fanen 'Forstå' i bunden for samme indhold i tekstform.">
-          <button class="hotspot" style="left:26.0%;top:7.7%;color:var(--pink)" data-id="hallucinationer" aria-label="Hallucinationer"></button>
+          <button class="hotspot" style="left:26.0%;top:7.7%;color:var(--pink)" data-id="hallucinationer" aria-label="Stærke eller mærkelige sanseindtryk"></button>
           <button class="hotspot" style="left:17.9%;top:17.5%;color:var(--cyan)" data-id="svimmelhed" aria-label="Hylen og svimmelhed"></button>
           <button class="hotspot" style="left:13.4%;top:26.8%;color:var(--cyan)" data-id="spaending" aria-label="Spænding i arme nakke hoved skuldre"></button>
           <button class="hotspot" style="left:12.9%;top:36.5%;color:var(--cyan)" data-id="traethed" aria-label="Træthed udmattelse"></button>
@@ -166,54 +170,70 @@
 
     <section id="understanding" class="section">
       <div class="card understandIntro">
-        <h2>Forstå symptomerne</h2>
-        <p>Angst kan ramme forskellige systemer i kroppen. Her er den korte, brugbare forklaring bag de tre hovedområder.</p>
+        <h2>Forstå og forebyg</h2>
+        <p>Angst kan ramme forskellige dele af kroppen. Her er en kort, brugbar forklaring på, hvad der sker, og hvad du selv kan gøre fremover.</p>
       </div>
 
+      <div class="subtabs">
+        <button class="subtab active" data-subtab="understandSymptoms">📚 Symptomer</button>
+        <button class="subtab" data-subtab="understandPrevent">🛡️ Forebyg</button>
+      </div>
+
+      <div id="understandSymptoms" class="subsection active">
       <details class="understandCard pinkText" open>
-        <summary><span>🧠 <span>Kognitiv / sanseforstyrrelser<small>Hjerne, sanser, hukommelse og dissociation</small></span></span><span class="chev">›</span></summary>
+        <summary><span>🧠 <span>Hoved og sanser<small>Tanker, syn, hørelse, hukommelse og følelsen af at være "væk"</small></span></span><span class="chev">›</span></summary>
         <div class="understandBody">
-          <div class="levelBox"><strong>Typisk ved høj belastning:</strong> sløret syn, synstab, tunnelsyn, midlertidig blindhed, nedsat hørelse eller høretab, hallucinationer i alle sanser, hukommelsestab, mental uro/forvirring, bevidsthedstab, pseudoanfald, dissociation, svimmelhed, føleforstyrrelser, brændende prikken/summen i ekstremiteter og besvimelse.</div>
-          <h4>Nervesystem</h4>
-          <p>Autonomt og parasympatisk. Kroppen kan både gå i alarm og i nedlukning.</p>
-          <h4>Modstandssystem</h4>
-          <p>Projektion og splitting, projektiv identifikation, benægtelse, dissociation og acting out. Sagt mere jordnært: hjernen forsøger at beskytte sig mod noget, der føles for overvældende.</p>
+          <div class="levelBox"><strong>Kan opleves som:</strong> sløret syn, tunnelsyn, midlertidigt nedsat syn eller hørelse, forstærkede eller mærkelige sanseindtryk, hukommelsesbesvær, forvirring, følelsen af at være "ved siden af sig selv" eller ikke helt til stede, svimmelhed, følelsesløshed eller prikken, og i sjældne tilfælde besvimelse.</div>
+          <h4>Hvad sker der i kroppen?</h4>
+          <p>Det er nervesystemet, der reagerer. I alarmberedskab bruger hjernen sin energi på at spejde efter fare frem for på koncentration, hukommelse og rolig sansning. Det kan gøre verden omkring dig til at føles fjern, tåget eller anderledes — det er ubehageligt, men det er kroppens alarmsystem, ikke et tegn på at noget er galt med din virkelighedsopfattelse.</p>
           <h4>Gør her og nu</h4>
-          <p>Brug grounding. Kig rundt, nævn hvor du er, og find fem konkrete ting i rummet.</p>
+          <p>Brug grounding. Kig rundt, sig højt eller for dig selv hvor du er, og find fem konkrete ting i rummet.</p>
         </div>
       </details>
 
       <details class="understandCard orangeText">
-        <summary><span>🫁 <span>Glatte muskulaturer<small>Organer, blodkar, tarm, blære og vejrtrækning</small></span></span><span class="chev">›</span></summary>
+        <summary><span>🫁 <span>Indre organer<small>Hjerte, vejrtrækning, mave, tarm og blære</small></span></span><span class="chev">›</span></summary>
         <div class="understandBody">
-          <div class="levelBox"><strong>Typisk ved mild til høj belastning:</strong> migrænehovedpine, astma-/kvælningfornemmelse, reflux, funktionel opkast, irritabel tyktarm, uforklarlige mavesmerter, blæreproblemer, betændelseslignende uro i mave-tarmsystemet, hypertension og i svære tilfælde hypertension med bevidsthedstab.</div>
-          <h4>Nervesystem</h4>
-          <p>Autonomt og parasympatisk. Det er de automatiske systemer, som man ikke bare kan “tage sig sammen” og styre direkte.</p>
-          <h4>Modstandssystem</h4>
-          <p>Repression, somatisering, omvendelse, træthed, depression og selvangreb. Kroppen kan komme til at udtrykke det, psyken ikke kan få reguleret.</p>
+          <div class="levelBox"><strong>Kan opleves som:</strong> hovedpine eller migræne, åndenød eller kvælningsfornemmelse, halsbrand, kvalme, opkast, urolig mave eller diarré, hyppig vandladning, og i sjældne tilfælde forhøjet blodtryk.</div>
+          <h4>Hvad sker der i kroppen?</h4>
+          <p>Disse reaktioner styres af det autonome nervesystem — den del af kroppen, man ikke kan styre med viljen alene. Man kan altså ikke bare "tage sig sammen" og stoppe hjertebanken eller kvalmen. Kroppen er sat i alarmberedskab, og det rammer de indre organer, før det rammer tankerne.</p>
           <h4>Gør her og nu</h4>
-          <p>Lav langsom udånding. Pust længere ud end du trækker ind. Det dæmper alarmresponsen.</p>
+          <p>Lav en langsom udånding. Pust længere ud, end du trækker ind. Det er et af de mest direkte signaler, du kan sende til nervesystemet om, at faren er drevet over.</p>
         </div>
       </details>
 
       <details class="understandCard cyanText">
-        <summary><span>💪 <span>Tværstribede muskulaturer<small>Muskler, kæbe, nakke, ryg, ben og hænder</small></span></span><span class="chev">›</span></summary>
+        <summary><span>💪 <span>Muskler og bevægelse<small>Kæbe, nakke, ryg, skuldre, arme og ben</small></span></span><span class="chev">›</span></summary>
         <div class="understandBody">
-          <div class="levelBox"><strong>Typisk ved lav til moderat belastning:</strong> kæbespændinger, spændingshovedpine, ondt i nakken, brystspænding, stakåndethed, svært ved at få vejret, muskelsmerter i mave, side, lænd og ryg, tics, fibromyalgi-lignende smerter, ledsmerter, bensmerter, kramper og tremor/rysten på hænder.</div>
-          <h4>Nervesystem</h4>
-          <p>Somatisk og sympatisk. Kroppen gør sig klar til kamp eller flugt.</p>
-          <h4>Modstandssystem</h4>
-          <p>Isolation af affekt, rationalisering, intellektualisering, afledning, generalisering og rumination. Kort sagt: hovedet kører, mens kroppen spænder op.</p>
+          <div class="levelBox"><strong>Kan opleves som:</strong> spændt kæbe, spændingshovedpine, ondt i nakke eller skuldre, trykken i brystet, muskelsmerter i ryg eller mave, uro eller rysten i hænder og ben, og rastløshed.</div>
+          <h4>Hvad sker der i kroppen?</h4>
+          <p>Kroppen gør sig klar til at handle — kæmpe, flygte eller gardere sig. Musklerne spænder op, selvom der ikke er nogen fysisk fare at reagere på. Det er derfor, angst kan give helt konkrete, kropslige smerter, selvom årsagen ikke er fysisk.</p>
           <h4>Gør her og nu</h4>
-          <p>Prøv “spænd og slip”: spænd en muskelgruppe i 5 sekunder og slip i 10 sekunder.</p>
+          <p>Prøv "spænd og slip": spænd en muskelgruppe i 5 sekunder, og slip i 10 sekunder. Det hjælper kroppen med at mærke forskellen mellem spænding og afspænding.</p>
         </div>
       </details>
+      </div>
+
+      <div id="understandPrevent" class="subsection">
+      <div class="card"><h3>😴 Søvn</h3><p>Dårlig søvn gør nervesystemet mere følsomt over for stress og øger risikoen for nye angstanfald. Prioriter faste sengetider, og søg hjælp hvis søvnproblemer varer ved — det kan blive en ond cirkel med angsten.</p></div>
+
+      <div class="card"><h3>🏃 Bevægelse</h3><p>Regelmæssig bevægelse — gerne 30 minutter de fleste dage — dæmper kroppens stressniveau og gør den mere robust. Det behøver ikke være hård træning: gåture, havearbejde eller cykling tæller med.</p></div>
+
+      <div class="card"><h3>🍷 Alkohol, koffein og rusmidler</h3><p>Alkohol og rusmidler kan føles lindrende der og da, men belaster nervesystemet og kan forværre angsten på sigt. Meget koffein kan give symptomer, der ligner og udløser angst (hjertebanken, uro, rysten).</p></div>
+
+      <div class="card"><h3>🚪 Pas på undgåelse</h3><p>Det er naturligt at undgå steder eller situationer, der har udløst angst før. Men jo mere man undgår, jo mindre lærer kroppen, at det egentlig var trygt. Tag gerne små skridt tilbage mod det, du undgår — gerne i dit eget tempo, og evt. med støtte fra en anden person.</p></div>
+
+      <div class="card"><h3>📋 Kend dine mønstre</h3><p>Brug Tracker-fanen til at få overblik over, hvilke symptomer der går igen. Det kan gøre angsten mindre skræmmende at genkende mønstret — og det er nyttig viden, hvis du taler med en læge eller behandler.</p></div>
+
+      <div class="card"><h3>🗣️ Når angsten fylder for meget</h3><p>Hvis angst forhindrer dig i at leve dit liv, som du gerne vil — fx undgå arbejde, sociale situationer eller daglige gøremål — er det værd at tale med din læge. Der findes god, virksom behandling, bl.a. kognitiv terapi, som kan læres og bruges resten af livet.</p></div>
+      </div>
     </section>
 
     <section id="help" class="section">
       <div class="card"><h2>Angst eller sygdom?</h2><p>Angst kan give voldsomme kropslige symptomer. Det betyder ikke automatisk, at noget er farligt. Men nye, kraftige eller vedvarende symptomer skal ikke bare bortforklares.</p></div>
       <div class="card"><h3 class="safe">Ofte angstrelateret</h3><p>Symptomer kommer i bølger, skifter placering, tiltager ved bekymring og aftager når kroppen falder til ro.</p></div>
-      <div class="card"><h3 class="danger">Søg lægehjælp akut ved</h3><p>Brystsmerter, besvimelse, lammelser, nyopstået svær åndenød, blodig opkast/afføring, ny kraftig hovedpine eller symptomer der føles markant anderledes end vanligt.</p></div>
+      <div class="card"><h3 class="danger">Søg lægehjælp akut ved</h3><p>Brystsmerter, besvimelse, lammelser, nyopstået svær åndenød, blodig opkast/afføring, ny kraftig hovedpine eller symptomer der føles markant anderledes end vanligt.</p><p style="margin-top:10px">Ring <strong>112</strong> ved akut, livstruende sygdom. Er du i tvivl, om det haster, så ring til <strong>Lægevagten på 1813</strong> (gælder Region Hovedstaden — andre regioner har egne numre) eller din egen læge.</p></div>
+      <div class="card"><h3>Få talt med nogen om angst</h3><p><strong>Angst & Stressforeningen</strong> tilbyder gratis, anonym telefonrådgivning fra mennesker, der selv har eller har haft angst:</p><p style="margin-top:8px">Voksne (18+) og pårørende: <strong>70 27 13 20</strong><br>Børn, unge og forældre: <strong>82 30 60 70</strong></p><p style="margin-top:8px">Åbningstiderne varierer — se <strong>angststress.dk</strong> for aktuelle tider. Du kan også tale med din egen læge om en henvisning til psykolog eller psykiatrisk vurdering.</p></div>
       <div class="card"><h3>Brug appen rigtigt</h3><p>Den er psykoedukation og støtte. Den erstatter ikke lægelig vurdering, terapi eller akut hjælp.</p></div>
     </section>
 
@@ -235,27 +255,27 @@
 
 <script>
 const symptoms={
- hallucinationer:{c:'pink',cat:'Kognitiv / sanse',title:'Hallucinationer eller sanseforstyrrelser',feel:'Lyde, synsindtryk, lugte eller kropsfornemmelser kan opleves stærkere, mærkelige eller truende.',why:'Ved høj alarmtilstand scanner hjernen efter fare. Sanseindtryk kan blive fejlfortolket eller forstærket.',now:'Sæt ord på: “Det her er et alarmsystem, ikke nødvendigvis en fare.” Kig på faste genstande i rummet og beskriv dem konkret.',react:'Søg faglig vurdering hvis du hører stemmer, ser ting andre ikke ser, bliver meget forpint, eller symptomet er nyt.'},
- svimmelhed:{c:'cyan',cat:'Krop / sanse',title:'Hylen, susen for ørerne eller svimmelhed',feel:'Susen, tryk i hovedet, gyngende fornemmelse eller usikkerhed i kroppen.',why:'Stressrespons, spændinger i nakke/kæbe og ændret vejrtrækning kan påvirke balance og ørefornemmelse.',now:'Sæt begge fødder i gulvet. Kig på ét fast punkt. Træk vejret langsomt ud længere end ind.',react:'Søg læge ved ny kraftig svimmelhed, neurologiske symptomer, besvimelse eller ensidig hørenedsættelse.'},
- spaending:{c:'cyan',cat:'Tværstribet muskulatur',title:'Spænding i arme, nakke, hoved og skuldre',feel:'Stramhed, tryk, ømhed, hovedpine eller en følelse af at kroppen holder fast.',why:'Kroppen gør sig klar til kamp/flugt. Musklerne spænder for at kunne reagere hurtigt.',now:'Sænk skuldrene. Pres fødderne i gulvet i 5 sekunder og slip. Gentag 5 gange.',react:'Reager hvis smerter bliver ved, begrænser funktion, eller der er føleforstyrrelser/lammelser.'},
- traethed:{c:'cyan',cat:'Nedlukning',title:'Træthed eller udmattelse',feel:'Tomhed, tunghed, lav energi eller følelsen af at kroppen “lukker ned”.',why:'Efter langvarig alarm kan nervesystemet skifte fra mobilisering til nedlukning.',now:'Gør én lille konkret ting: drik vand, sæt dig op, åbn et vindue. Ikke en hel plan.',react:'Søg hjælp hvis udmattelsen er vedvarende, ledsaget af depression, eller du ikke kan passe basale behov.'},
- haender:{c:'cyan',cat:'Tværstribet muskulatur',title:'Knyttede hænder',feel:'Hænderne spænder, fingrene låser, eller kroppen føles klar til forsvar.',why:'Kamprespons aktiverer muskler i arme og hænder.',now:'Åbn hænderne langsomt. Læg mærke til håndfladerne. Hold noget koldt eller fast i hånden.',react:'Søg vurdering ved vedvarende kramper, kraftnedsættelse eller føleforstyrrelser.'},
- hals:{c:'cyan',cat:'Muskelspænding',title:'Tryk i hals, kæbe eller stemme',feel:'Klump i halsen, stram kæbe, hæshed eller trykken i bryst/hals.',why:'Spændinger i kæbe, hals og åndedrætsmuskler kan give kvælnings- eller trykfornemmelse.',now:'Lad underkæben hænge lidt. Synk. Pust ud som gennem et sugerør.',react:'Søg akut hjælp ved reel vejrtrækningsbesvær, hævelse, allergisk reaktion eller stærke brystsmerter.'},
- ben:{c:'cyan',cat:'Tværstribet muskulatur',title:'Spænding eller uro i mave, ben og fødder',feel:'Rastløshed, sitren, uro i benene eller behov for at gå rundt.',why:'Kroppen mobiliserer energi til flugt. Det kan mærkes som uro eller indre motor.',now:'Gå langsomt 2 minutter. Mærk hæl, fodsål og tæer mod gulvet.',react:'Søg læge ved nye hævelser, stærke smerter, føleforstyrrelser eller ensidig bensmerte.'},
- hukommelse:{c:'pink',cat:'Kognitiv',title:'Tåget, forvirret, mister tråden eller dårlig hukommelse',feel:'Du kan miste overblik, glemme ord, ikke følge samtalen eller føle dig tåget.',why:'Når hjernen er i alarm, prioriterer den fare frem for koncentration og hukommelse.',now:'Skriv én sætning ned: “Hvad er næste lille skridt?” Gør kun det.',react:'Søg vurdering ved nyopstået forvirring, desorientering, feber, hovedtraume eller pludselig ændring.'},
- dissociation:{c:'pink',cat:'Kognitiv / sanse',title:'Fryser, dissociation eller udmattethed',feel:'Du kan føle dig fjern, uvirkelig, frakoblet kroppen eller fastfrosset.',why:'Nervesystemet kan skifte til frys/nedlukning, når belastningen føles for høj.',now:'Navngiv hvor du er, datoen og tre ting du kan se. Pres fødderne mod gulvet.',react:'Søg hjælp hvis det varer længe, sker ofte, eller du mister tid/overblik.'},
- syn:{c:'pink',cat:'Sanseforstyrrelse',title:'Synsforstyrrelser eller indsnævret synsfelt',feel:'Sløret syn, tunnelsyn, prikker, flimren eller svært ved at fokusere.',why:'Alarmrespons ændrer opmærksomhed, muskelspænding og vejrtrækning. Synet kan føles påvirket.',now:'Kig langsomt rundt og nævn 5 farver. Blink bevidst og sænk skuldrene.',react:'Søg akut hjælp ved pludseligt synstab, dobbeltsyn, lammelser eller ny voldsom hovedpine.'},
- blodkar:{c:'orange',cat:'Glat muskulatur',title:'Blodkar: blussen, rødmen eller migræne',feel:'Varme, rødmen, dunkende fornemmelse eller hovedpine.',why:'Det autonome nervesystem påvirker blodkar og blodgennemstrømning.',now:'Sænk tempoet, drik vand, dæmp lys og lyd. Brug kendt migræneplan hvis du har en.',react:'Søg akut hjælp ved ny kraftig hovedpine, neurologiske symptomer eller hovedpine efter slag.'},
- luftveje:{c:'orange',cat:'Glat muskulatur',title:'Luftveje: kvælningsfornemmelse',feel:'Trykken i brystet, luftmangel, behov for at gispe eller frygt for ikke at kunne trække vejret.',why:'Hyperventilation og spændte åndedrætsmuskler kan give kvælningsfornemmelse uden iltmangel.',now:'Pust langsomt ud. Hold en lille pause. Træk roligt ind. Gentag uden at overstyre vejrtrækningen.',react:'Søg akut hjælp ved blå læber, ny svær åndenød, astmaanfald eller brystsmerter.'},
- hjerte:{c:'orange',cat:'Glat muskulatur / autonomt',title:'Hjerte: hjertebanken, kramper eller arytmi',feel:'Hurtig puls, ekstraslag, trykken, dunkende hjerte eller uro i brystet.',why:'Adrenalin gør hjertet klar til handling. Det kan føles voldsomt, men er ofte en angstreaktion.',now:'Stop op. Mærk fødderne. Pust langsomt ud 8 gange. Undgå at pulse-tjekke konstant.',react:'Søg akut hjælp ved brystsmerter, besvimelse, åndenød, udstråling til arm/kæbe eller kendt hjertesygdom.'},
- tarm:{c:'orange',cat:'Glat muskulatur',title:'Tarmsymptomer: kvalme, opkast eller diarré',feel:'Kvalme, mavekneb, løs mave, opkastfornemmelse eller uro i maven.',why:'Tarm og hjerne hænger tæt sammen. Stress påvirker fordøjelse og tarmbevægelser.',now:'Spis/drik småt. Læg en hånd på maven og træk vejret roligt. Undgå at kæmpe imod kvalmen.',react:'Søg læge ved blod, stærke smerter, dehydrering, feber eller vedvarende opkast/diarré.'},
- blaere:{c:'orange',cat:'Glat muskulatur',title:'Blærepres eller tissetrang',feel:'Hyppig vandladning, pres i blæren eller akut tissetrang.',why:'Alarmrespons kan gøre kroppen mere følsom for blæresignaler.',now:'Registrér trangen uden panik. Træk vejret langsomt og vent 1-2 minutter før du handler.',react:'Søg læge ved smerter, blod i urin, feber eller mistanke om infektion.'},
- summen:{c:'pink',cat:'Sanse/krop',title:'Summende fornemmelse i arme, hænder, ben eller fødder',feel:'Prikken, summen, sitren eller elektrisk fornemmelse.',why:'Stress, muskelspænding og ændret vejrtrækning kan påvirke følesansen.',now:'Ryst hænderne blidt. Mærk underlaget. Pust langsomt ud og bevæg kroppen roligt.',react:'Søg akut vurdering ved ensidig følelsesløshed, lammelse, talebesvær eller pludselig debut.'}
+ hallucinationer:{c:'pink',cat:'Hoved og sanser',title:'Stærke eller mærkelige sanseindtryk',feel:'Lyde, syn, lugte eller kropsfornemmelser kan opleves stærkere, forvrængede eller mere skræmmende end normalt.',why:'Ved høj alarmberedskab spejder hjernen ekstra efter fare. Sanseindtryk kan blive forstærket eller fejltolket — det er en stressreaktion, ikke det samme som en psykose.',now:'Sæt ord på: "Det her er kroppens alarmsystem, ikke nødvendigvis en fare." Kig på faste genstande i rummet og beskriv dem konkret.',react:'Søg faglig vurdering hvis du oplever at høre eller se ting, som ikke er der, uafhængigt af angst, eller hvis det bliver ved efter at roen er vendt tilbage.'},
+ svimmelhed:{c:'cyan',cat:'Krop og sanser',title:'Hylen, susen for ørerne eller svimmelhed',feel:'Susen, tryk i hovedet, gyngende fornemmelse eller usikkerhed i kroppen.',why:'Stressrespons, spændinger i nakke/kæbe og ændret vejrtrækning kan påvirke balance og ørefornemmelse.',now:'Sæt begge fødder i gulvet. Kig på ét fast punkt. Træk vejret langsomt ud længere end ind.',react:'Søg læge ved ny kraftig svimmelhed, neurologiske symptomer, besvimelse eller ensidig hørenedsættelse.'},
+ spaending:{c:'cyan',cat:'Muskler og bevægelse',title:'Spænding i arme, nakke, hoved og skuldre',feel:'Stramhed, tryk, ømhed, hovedpine eller en følelse af at kroppen holder fast.',why:'Kroppen gør sig klar til kamp/flugt. Musklerne spænder for at kunne reagere hurtigt.',now:'Sænk skuldrene. Pres fødderne i gulvet i 5 sekunder og slip. Gentag 5 gange.',react:'Reager hvis smerter bliver ved, begrænser funktion, eller der er føleforstyrrelser/lammelser.'},
+ traethed:{c:'cyan',cat:'Krop og energi',title:'Træthed eller udmattelse',feel:'Tomhed, tunghed, lav energi eller følelsen af at kroppen “lukker ned”.',why:'Efter langvarig alarm kan nervesystemet skifte fra mobilisering til nedlukning.',now:'Gør én lille konkret ting: drik vand, sæt dig op, åbn et vindue. Ikke en hel plan.',react:'Søg hjælp hvis udmattelsen er vedvarende, ledsaget af depression, eller du ikke kan passe basale behov.'},
+ haender:{c:'cyan',cat:'Muskler og bevægelse',title:'Knyttede hænder',feel:'Hænderne spænder, fingrene låser, eller kroppen føles klar til forsvar.',why:'Kamprespons aktiverer muskler i arme og hænder.',now:'Åbn hænderne langsomt. Læg mærke til håndfladerne. Hold noget koldt eller fast i hånden.',react:'Søg vurdering ved vedvarende kramper, kraftnedsættelse eller føleforstyrrelser.'},
+ hals:{c:'cyan',cat:'Muskler og bevægelse',title:'Tryk i hals, kæbe eller stemme',feel:'Klump i halsen, stram kæbe, hæshed eller trykken i bryst/hals.',why:'Spændinger i kæbe, hals og åndedrætsmuskler kan give kvælnings- eller trykfornemmelse.',now:'Lad underkæben hænge lidt. Synk. Pust ud som gennem et sugerør.',react:'Søg akut hjælp ved reel vejrtrækningsbesvær, hævelse, allergisk reaktion eller stærke brystsmerter.'},
+ ben:{c:'cyan',cat:'Muskler og bevægelse',title:'Spænding eller uro i mave, ben og fødder',feel:'Rastløshed, sitren, uro i benene eller behov for at gå rundt.',why:'Kroppen mobiliserer energi til flugt. Det kan mærkes som uro eller indre motor.',now:'Gå langsomt 2 minutter. Mærk hæl, fodsål og tæer mod gulvet.',react:'Søg læge ved nye hævelser, stærke smerter, føleforstyrrelser eller ensidig bensmerte.'},
+ hukommelse:{c:'pink',cat:'Hoved og sanser',title:'Tåget, forvirret, mister tråden eller dårlig hukommelse',feel:'Du kan miste overblik, glemme ord, ikke følge samtalen eller føle dig tåget.',why:'Når hjernen er i alarm, prioriterer den fare frem for koncentration og hukommelse.',now:'Skriv én sætning ned: “Hvad er næste lille skridt?” Gør kun det.',react:'Søg vurdering ved nyopstået forvirring, desorientering, feber, hovedtraume eller pludselig ændring.'},
+ dissociation:{c:'pink',cat:'Hoved og sanser',title:'Fryser, dissociation eller udmattethed',feel:'Du kan føle dig fjern, uvirkelig, frakoblet kroppen eller fastfrosset.',why:'Nervesystemet kan skifte til frys/nedlukning, når belastningen føles for høj.',now:'Navngiv hvor du er, datoen og tre ting du kan se. Pres fødderne mod gulvet.',react:'Søg hjælp hvis det varer længe, sker ofte, eller du mister tid/overblik.'},
+ syn:{c:'pink',cat:'Hoved og sanser',title:'Synsforstyrrelser eller indsnævret synsfelt',feel:'Sløret syn, tunnelsyn, prikker, flimren eller svært ved at fokusere.',why:'Alarmrespons ændrer opmærksomhed, muskelspænding og vejrtrækning. Synet kan føles påvirket.',now:'Kig langsomt rundt og nævn 5 farver. Blink bevidst og sænk skuldrene.',react:'Søg akut hjælp ved pludseligt synstab, dobbeltsyn, lammelser eller ny voldsom hovedpine.'},
+ blodkar:{c:'orange',cat:'Indre organer',title:'Blodkar: blussen, rødmen eller migræne',feel:'Varme, rødmen, dunkende fornemmelse eller hovedpine.',why:'Det autonome nervesystem påvirker blodkar og blodgennemstrømning.',now:'Sænk tempoet, drik vand, dæmp lys og lyd. Brug kendt migræneplan hvis du har en.',react:'Søg akut hjælp ved ny kraftig hovedpine, neurologiske symptomer eller hovedpine efter slag.'},
+ luftveje:{c:'orange',cat:'Indre organer',title:'Luftveje: kvælningsfornemmelse',feel:'Trykken i brystet, luftmangel, behov for at gispe eller frygt for ikke at kunne trække vejret.',why:'Hyperventilation og spændte åndedrætsmuskler kan give kvælningsfornemmelse uden iltmangel.',now:'Pust langsomt ud. Hold en lille pause. Træk roligt ind. Gentag uden at overstyre vejrtrækningen.',react:'Søg akut hjælp ved blå læber, ny svær åndenød, astmaanfald eller brystsmerter.'},
+ hjerte:{c:'orange',cat:'Indre organer',title:'Hjerte: hjertebanken, kramper eller arytmi',feel:'Hurtig puls, ekstraslag, trykken, dunkende hjerte eller uro i brystet.',why:'Adrenalin gør hjertet klar til handling. Det kan føles voldsomt, men er ofte en angstreaktion.',now:'Stop op. Mærk fødderne. Pust langsomt ud 8 gange. Undgå at pulse-tjekke konstant.',react:'Søg akut hjælp ved brystsmerter, besvimelse, åndenød, udstråling til arm/kæbe eller kendt hjertesygdom.'},
+ tarm:{c:'orange',cat:'Indre organer',title:'Tarmsymptomer: kvalme, opkast eller diarré',feel:'Kvalme, mavekneb, løs mave, opkastfornemmelse eller uro i maven.',why:'Tarm og hjerne hænger tæt sammen. Stress påvirker fordøjelse og tarmbevægelser.',now:'Spis/drik småt. Læg en hånd på maven og træk vejret roligt. Undgå at kæmpe imod kvalmen.',react:'Søg læge ved blod, stærke smerter, dehydrering, feber eller vedvarende opkast/diarré.'},
+ blaere:{c:'orange',cat:'Indre organer',title:'Blærepres eller tissetrang',feel:'Hyppig vandladning, pres i blæren eller akut tissetrang.',why:'Alarmrespons kan gøre kroppen mere følsom for blæresignaler.',now:'Registrér trangen uden panik. Træk vejret langsomt og vent 1-2 minutter før du handler.',react:'Søg læge ved smerter, blod i urin, feber eller mistanke om infektion.'},
+ summen:{c:'pink',cat:'Krop og sanser',title:'Summende fornemmelse i arme, hænder, ben eller fødder',feel:'Prikken, summen, sitren eller elektrisk fornemmelse.',why:'Stress, muskelspænding og ændret vejrtrækning kan påvirke følesansen.',now:'Ryst hænderne blidt. Mærk underlaget. Pust langsomt ud og bevæg kroppen roligt.',react:'Søg akut vurdering ved ensidig følelsesløshed, lammelse, talebesvær eller pludselig debut.'}
 };
 const groups={
- kognitiv:{c:'pink',cat:'Overblik',title:'Kognitiv / sanseforstyrrelser',feel:'Omfatter hukommelse, koncentration, syn, hørelse, dissociation og ændret kropsfornemmelse.',why:'Hjernen prioriterer trusselsscanning frem for nuanceret tænkning, når alarmen er høj.',now:'Brug grounding: nævn hvor du er, datoen, 5 ting du ser og én konkret handling.',react:'Søg hjælp hvis virkelighedsopfattelsen påvirkes, eller symptomerne er nye og markante.'},
- glatte:{c:'orange',cat:'Overblik',title:'Glatte muskulaturer',feel:'Reaktioner i organer, blodkar, luftveje, blære, tarm og hjerte.',why:'Det autonome nervesystem styrer mange indre systemer uden vilje. Angst kan mærkes fysisk.',now:'Langsom udånding og rolig orientering kan dæmpe alarmresponsen.',react:'Nye, voldsomme eller vedvarende kropssymptomer bør vurderes lægeligt.'},
- tvaer:{c:'cyan',cat:'Overblik',title:'Tværstribede muskulaturer',feel:'Spændinger, uro, sitren, knyttede hænder og smerter i muskler.',why:'Kroppen forbereder sig på kamp/flugt, så musklerne bliver parate.',now:'Spænd og slip muskelgrupper én ad gangen. Bevæg dig langsomt og bevidst.',react:'Søg vurdering ved lammelse, kraftnedsættelse, ny stærk smerte eller føleforstyrrelser.'}
+ kognitiv:{c:'pink',cat:'Overblik',title:'Hoved og sanser',feel:'Omfatter hukommelse, koncentration, syn, hørelse og følelsen af at være "væk" eller ikke helt til stede.',why:'Hjernen prioriterer at spejde efter fare frem for nuanceret tænkning, når alarmen er høj.',now:'Brug grounding: nævn hvor du er, datoen, 5 ting du ser og én konkret handling.',react:'Søg hjælp hvis det føles markant anderledes end normalt, eller symptomerne er nye.'},
+ glatte:{c:'orange',cat:'Overblik',title:'Indre organer',feel:'Reaktioner i organer, blodkar, luftveje, blære, tarm og hjerte.',why:'Det autonome nervesystem styrer mange indre systemer uden viljens hjælp. Angst kan derfor mærkes helt fysisk.',now:'Langsom udånding og rolig orientering kan dæmpe alarmresponsen.',react:'Nye, voldsomme eller vedvarende kropssymptomer bør vurderes lægeligt.'},
+ tvaer:{c:'cyan',cat:'Overblik',title:'Muskler og bevægelse',feel:'Spændinger, uro, sitren, knyttede hænder og smerter i muskler.',why:'Kroppen gør sig klar til at handle, så musklerne spænder op og bliver parate.',now:'Spænd og slip muskelgrupper én ad gangen. Bevæg dig langsomt og bevidst.',react:'Søg vurdering ved lammelse, kraftnedsættelse, ny stærk smerte eller føleforstyrrelser.'}
 };
 const colorMap={pink:'var(--pink)',cyan:'var(--cyan)',orange:'var(--orange)'};
 const relatedMap={
@@ -308,6 +328,10 @@ function prevPanicStep(){
 }
 
 document.querySelectorAll('[data-section]').forEach(b=>b.addEventListener('click',()=>showSection(b.dataset.section)));
+document.querySelectorAll('.subtab').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.subtab').forEach(x=>x.classList.toggle('active',x===b));
+  document.querySelectorAll('.subsection').forEach(s=>s.classList.toggle('active',s.id===b.dataset.subtab));
+}));
 function runExercise(type){closeModal(); if(type==='breath') startBreath('Langsom udånding',4,7); else openExercise(type)}
 function openExercise(type){const data={grounding:{c:'cyan',cat:'Øvelse',title:'5-4-3-2-1 grounding',feel:'Bruges når kroppen er i alarm, ved dissociation eller tankemylder.',why:'Øvelsen flytter opmærksomheden fra indre trusselsscanning til konkret sansning.',now:'5 ting du kan se. 4 ting du kan mærke. 3 ting du kan høre. 2 ting du kan lugte. 1 ting du kan smage.',react:'Hvis du bliver mere frakoblet eller utryg, så søg kontakt til en anden person.'},muscle:{c:'cyan',cat:'Øvelse',title:'Spænd og slip',feel:'Bruges ved uro, spænding, knyttede hænder eller kropslig alarm.',why:'Når musklerne først spændes bevidst og derefter slippes, kan kroppen registrere forskellen.',now:'Spænd hænder 5 sekunder, slip 10. Spænd skuldre 5, slip 10. Spænd ben 5, slip 10. Gentag.',react:'Undgå øvelsen ved skade eller stærke smerter.'}};openInfo(data[type])}
 let breathTimer=null;
@@ -431,7 +455,7 @@ updateInstallButton();
 
     window.addEventListener('load', async () => {
       try {
-        const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260619-01', { updateViaCache: 'none' });
+        const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260619-02', { updateViaCache: 'none' });
 
         const forceNewWorker = worker => {
           if (!worker) return;
