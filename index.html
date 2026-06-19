@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-  <title>Angst – kroppens reaktioner V5</title>
-  <!-- V5: patientvendt fagsprog, forebyggelsesafsnit og hjælpenumre -->
+  <title>Angst – kroppens reaktioner V6</title>
+  <!-- V6: tre visuelle, interaktive øvelser -->
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#05060a">
   <meta name="mobile-web-app-capable" content="yes">
@@ -110,6 +110,64 @@
     .levelBox{border-left:3px solid currentColor;padding:8px 10px;margin:10px 0;background:#0004;border-radius:8px}
     .pinkText{color:var(--pink)}.orangeText{color:var(--orange)}.cyanText{color:var(--cyan)}
 
+
+    /* VISUELLE ØVELSER V6 */
+    .exercise{position:relative;overflow:hidden;padding:0;background:linear-gradient(145deg,#171722,#0a0a10)}
+    .exercisePreview{height:118px;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#00e6e622,transparent 62%);border-bottom:1px solid #ffffff12}
+    .exercisePreview svg{width:105px;height:105px;filter:drop-shadow(0 0 14px #00e6e650)}
+    .exerciseCopy{padding:14px}.exerciseCopy h3{margin:0 0 6px}.exerciseCopy p{margin:0;color:#cfd0d8;line-height:1.4}
+    .exerciseActions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.exerciseActions button{margin-top:12px}
+    dialog.exerciseMode{top:calc(env(safe-area-inset-top) + 8px);bottom:calc(env(safe-area-inset-bottom) + 78px);height:auto;max-height:none}
+    dialog.exerciseMode .modal{height:100%;max-height:none;overflow:hidden;display:flex;flex-direction:column;padding:15px}
+    dialog.exerciseMode #modalContent{flex:1;min-height:0;overflow:auto;scrollbar-width:none}
+    dialog.exerciseMode #modalContent::-webkit-scrollbar{display:none}
+    dialog.exerciseMode .modalTop{flex:0 0 auto}
+    .visualExercise{min-height:100%;display:flex;flex-direction:column;text-align:center}
+    .exerciseLead{margin:0 auto 12px;color:#cfd0d8;line-height:1.4;max-width:330px}
+    .exerciseStatus{font-size:22px;font-weight:900;margin:4px 0 2px}
+    .exerciseSub{min-height:40px;color:var(--muted);line-height:1.35;margin:0 auto 10px;max-width:330px}
+    .visualStage{position:relative;flex:1;min-height:250px;display:grid;place-items:center;border:1px solid #ffffff14;border-radius:24px;background:radial-gradient(circle at 50% 42%,#00e6e616,#07070c 68%);overflow:hidden}
+    .visualControls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding-top:12px}
+    .visualControls button{margin:0;min-width:105px}
+    .visualControls .primary{background:#00e6e619;border-color:#00e6e670}.visualControls button:disabled{opacity:.35;cursor:not-allowed;box-shadow:none}
+    .exerciseProgress{height:7px;background:#ffffff12;border-radius:999px;overflow:hidden;margin:0 0 12px}
+    .exerciseProgress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--pink));border-radius:999px;box-shadow:0 0 16px #00e6e680;transition:width .25s ease}
+
+    /* Finger-vejrtrækning */
+    .handSvg{width:min(85%,300px);height:auto;overflow:visible}
+    .handFill{fill:#00e6e60b;stroke:#ffffff38;stroke-width:5;stroke-linejoin:round}
+    .tracePath{fill:none;stroke:#00e6e633;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+    .traceDot{fill:#fff;stroke:var(--cyan);stroke-width:7;filter:drop-shadow(0 0 10px #00e6e6) drop-shadow(0 0 18px #00e6e6)}
+    .fingerCount{display:flex;justify-content:center;gap:8px;margin:10px 0 0}.fingerCount i{width:12px;height:12px;border-radius:50%;background:#ffffff18;border:1px solid #ffffff30}.fingerCount i.done{background:var(--cyan);box-shadow:0 0 12px #00e6e6}
+    .breathPulse{position:absolute;width:210px;height:210px;border-radius:50%;border:1px solid #00e6e625;box-shadow:0 0 50px #00e6e618;transition:transform 3s ease,opacity .3s ease;pointer-events:none}.breathPulse.in{transform:scale(1.18);opacity:1}.breathPulse.out{transform:scale(.78);opacity:.45}
+
+    /* Grounding */
+    .groundingIcon{font-size:76px;line-height:1;filter:drop-shadow(0 0 20px #00e6e655);margin-bottom:12px}
+    .groundingTarget{font-size:28px;font-weight:950;margin:0 16px 8px}
+    .senseDots{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;max-width:300px;margin:16px auto}
+    .senseDot{width:52px;height:52px;border-radius:50%;border:2px solid #ffffff35;background:#ffffff08;color:#fff;font-size:20px;font-weight:900;display:grid;place-items:center;transition:.2s transform,.2s background,.2s box-shadow}
+    .senseDot.found{background:#00e6e628;border-color:var(--cyan);box-shadow:0 0 20px #00e6e655;transform:scale(.92)}
+    .senseDot.found::after{content:'✓'}
+    .senseDot.found span{display:none}
+    .groundingSteps{display:flex;justify-content:center;gap:6px;margin:10px 0}.groundingSteps i{height:6px;flex:1;max-width:42px;border-radius:999px;background:#ffffff18}.groundingSteps i.done,.groundingSteps i.current{background:var(--cyan);box-shadow:0 0 10px #00e6e680}.groundingSteps i.current{background:var(--pink)}
+    .groundingDone{font-size:86px;margin:16px 0;filter:drop-shadow(0 0 24px #32d17d66)}
+
+    /* Spænd og slip */
+    .muscleLayout{display:grid;grid-template-columns:1fr;place-items:center;width:100%;height:100%;padding:8px}
+    .bodySvg{height:min(42svh,330px);width:auto;overflow:visible}
+    .bodyBase{fill:#ffffff08;stroke:#ffffff35;stroke-width:4}
+    .bodyPart{fill:#ffffff0b;stroke:#ffffff18;stroke-width:3;transition:fill .25s,stroke .25s,filter .25s,transform .25s;transform-box:fill-box;transform-origin:center}
+    .bodyPart.activeReady{fill:#00e6e625;stroke:var(--cyan);filter:drop-shadow(0 0 10px #00e6e655)}
+    .bodyPart.activeTense{fill:#ff3aa642;stroke:var(--pink);filter:drop-shadow(0 0 12px #ff3aa6);transform:scale(1.04)}
+    .bodyPart.activeRelax{fill:#32d17d35;stroke:var(--green);filter:drop-shadow(0 0 12px #32d17d)}
+    .countRing{position:absolute;right:15px;top:15px;width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:#08080ddd;border:4px solid #ffffff18;font-size:24px;font-weight:950;box-shadow:0 0 24px #000}
+    .countRing.tense{border-color:var(--pink);color:var(--pink);box-shadow:0 0 22px #ff3aa644}.countRing.relax{border-color:var(--green);color:var(--green);box-shadow:0 0 22px #32d17d44}
+    .muscleAreaName{font-size:24px;font-weight:950;margin-top:2px}.safetyNote{font-size:13px;color:#c2c3cc;margin:8px 8px 0}
+
+    @media (max-height:720px){
+      dialog.exerciseMode .modal{padding:12px}.visualStage{min-height:210px}.bodySvg{height:270px}.handSvg{width:245px}.groundingIcon{font-size:60px}.groundingTarget{font-size:23px}.senseDot{width:45px;height:45px}
+    }
+
   </style>
 </head>
 <body>
@@ -146,11 +204,21 @@
       <div class="card"><h2>Øvelser her og nu</h2><p>Formålet er ikke at fjerne angst med magt. Formålet er at sende kroppen signalet: “Jeg er ikke i akut fare.”</p></div>
       <div class="card"><h3>Favoritter</h3><div id="favList" class="favList"><p class="muted">Ingen favoritter endnu.</p></div></div>
       <div class="list">
-        <div class="exercise"><h3>Langsom udånding</h3><p>Ind 4 sekunder. Ud 7 sekunder. God ved hjertebanken, luftmangel og uro.</p><button onclick="startBreath('Langsom udånding',4,7)">Start timer</button> <button onclick="toggleFavorite('breath')">⭐ Favorit</button></div>
-        <div class="exercise"><h3>5-4-3-2-1 grounding</h3><p>God ved dissociation, panik, svimmelhed og tankemylder.</p><button onclick="openExercise('grounding')">Åbn guide</button> <button onclick="toggleFavorite('grounding')">⭐ Favorit</button></div>
-        <div class="exercise"><h3>Spænd og slip</h3><p>God ved muskelspænding, knyttede hænder og uro i ben.</p><button onclick="openExercise('muscle')">Åbn guide</button> <button onclick="toggleFavorite('muscle')">⭐ Favorit</button></div>
+        <div class="exercise">
+          <div class="exercisePreview" aria-hidden="true">
+            <svg viewBox="0 0 120 120"><path d="M38 103C25 89 28 71 34 59l2-31c0-8 12-8 12 0v22-34c0-8 12-8 12 0v32-37c0-8 12-8 12 0v38-32c0-8 12-8 12 0v38-21c0-8 12-8 12 0v36c0 24-16 38-37 38-9 0-16-2-21-5Z" fill="#00e6e611" stroke="#00e6e6" stroke-width="3"/><circle cx="39" cy="91" r="6" fill="#fff" stroke="#ff3aa6" stroke-width="3"/></svg>
+          </div>
+          <div class="exerciseCopy"><h3>Finger-vejrtrækning</h3><p>Følg lyspunktet op og ned langs hånden. Fem rolige vejrtrækninger.</p><div class="exerciseActions"><button onclick="startFingerBreathing()">Start øvelse</button><button onclick="toggleFavorite('breath')">⭐ Favorit</button></div></div>
+        </div>
+        <div class="exercise">
+          <div class="exercisePreview" aria-hidden="true"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="#00e6e60b" stroke="#00e6e6" stroke-width="3"/><path d="M32 60h56M60 32v56" stroke="#ffffff55" stroke-width="3" stroke-linecap="round"/><circle cx="42" cy="43" r="8" fill="#ff3aa6"/><circle cx="78" cy="43" r="8" fill="#ff8a00"/><circle cx="42" cy="77" r="8" fill="#32d17d"/><circle cx="78" cy="77" r="8" fill="#00e6e6"/></svg></div>
+          <div class="exerciseCopy"><h3>5-4-3-2-1 grounding</h3><p>Én sans ad gangen. Tryk på cirklerne, efterhånden som du finder noget.</p><div class="exerciseActions"><button onclick="startGrounding()">Start øvelse</button><button onclick="toggleFavorite('grounding')">⭐ Favorit</button></div></div>
+        </div>
+        <div class="exercise">
+          <div class="exercisePreview" aria-hidden="true"><svg viewBox="0 0 120 120"><circle cx="60" cy="22" r="12" fill="#ffffff12" stroke="#00e6e6" stroke-width="3"/><path d="M48 37h24l8 28-9 7v33H49V72l-9-7 8-28Z" fill="#ffffff0c" stroke="#00e6e6" stroke-width="3"/><circle cx="43" cy="64" r="7" fill="#ff3aa6"/><circle cx="77" cy="64" r="7" fill="#ff3aa6"/><path d="M51 104v11M69 104v11" stroke="#32d17d" stroke-width="7" stroke-linecap="round"/></svg></div>
+          <div class="exerciseCopy"><h3>Spænd og slip</h3><p>Kroppens områder lyser ét ad gangen. Fem sekunder spænding og ti sekunder ro.</p><div class="exerciseActions"><button onclick="startMuscleRelaxation()">Start øvelse</button><button onclick="toggleFavorite('muscle')">⭐ Favorit</button></div></div>
+        </div>
       </div>
-      <div id="breathBox" class="card" style="display:none"><h3 id="breathTitle"></h3><div class="breathCircle" id="breathCircle">Klar</div><p class="muted" id="breathText"></p></div>
     </section>
 
     <section id="panic" class="section">
@@ -285,13 +353,15 @@ const exerciseFor={hjerte:'breath',luftveje:'breath',svimmelhed:'grounding',diss
 function relatedHtml(id){const rel=relatedMap[id]||[];if(!rel.length)return'';return `<div class="block"><h3>Relaterede symptomer</h3><div class="related">${rel.map(r=>`<button onclick="openSymptom('${r}')">${symptoms[r].title.split(':')[0]}</button>`).join('')}</div></div>`}
 function exerciseButton(id){const ex=exerciseFor[id];if(!ex)return'';const label=ex==='breath'?'Start vejrtrækning':ex==='muscle'?'Åbn afspænding':'Åbn grounding';return `<div class="actionRow"><button class="miniBtn" onclick="runExercise('${ex}')">${label}</button></div>`}
 function openSymptom(id){const btn=document.querySelector(`.hotspot[data-id="${id}"]`);document.querySelectorAll('.hotspot').forEach(h=>h.classList.remove('active'));if(btn)btn.classList.add('active');openInfo(symptoms[id],id)}
-function openInfo(obj,id){document.querySelectorAll('.hotspot').forEach(h=>{if(!id || h.dataset.id!==id)h.classList.remove('active')});const box=document.getElementById('modalBox');box.style.color=colorMap[obj.c]||'var(--cyan)';document.getElementById('badge').textContent=obj.cat;document.getElementById('modalTitle').textContent=obj.title;document.getElementById('modalContent').innerHTML=`<div class="block"><h3>Hvad opleves?</h3><p>${obj.feel}</p></div><div class="block"><h3>Hvorfor sker det ved angst?</h3><p>${obj.why}</p></div><div class="block"><h3>Hvad kan jeg gøre lige nu?</h3><p>${obj.now}</p>${id?exerciseButton(id):''}</div><div class="block"><h3>Hvornår bør man reagere?</h3><p>${obj.react}</p></div>${id?relatedHtml(id):''}`;document.getElementById('modal').showModal()}
+function openInfo(obj,id){stopExerciseActivity();document.getElementById('modal').classList.remove('exerciseMode');document.querySelectorAll('.hotspot').forEach(h=>{if(!id || h.dataset.id!==id)h.classList.remove('active')});const box=document.getElementById('modalBox');box.style.color=colorMap[obj.c]||'var(--cyan)';document.getElementById('badge').textContent=obj.cat;document.getElementById('modalTitle').textContent=obj.title;document.getElementById('modalContent').innerHTML=`<div class="block"><h3>Hvad opleves?</h3><p>${obj.feel}</p></div><div class="block"><h3>Hvorfor sker det ved angst?</h3><p>${obj.why}</p></div><div class="block"><h3>Hvad kan jeg gøre lige nu?</h3><p>${obj.now}</p>${id?exerciseButton(id):''}</div><div class="block"><h3>Hvornår bør man reagere?</h3><p>${obj.react}</p></div>${id?relatedHtml(id):''}`;document.getElementById('modal').showModal()}
 
 document.querySelectorAll('.hotspot').forEach(btn=>btn.addEventListener('click',()=>openSymptom(btn.dataset.id)));
 document.querySelectorAll('[data-info]').forEach(btn=>btn.addEventListener('click',()=>openInfo(groups[btn.dataset.info])));
 function closeModal(){
-  clearInterval(breathTimer);
-  document.getElementById('modal').close();
+  stopExerciseActivity();
+  const modal=document.getElementById('modal');
+  modal.classList.remove('exerciseMode');
+  if(modal.open) modal.close();
   document.querySelectorAll('.hotspot').forEach(h=>h.classList.remove('active'));
 }
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
@@ -332,43 +402,216 @@ document.querySelectorAll('.subtab').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.subtab').forEach(x=>x.classList.toggle('active',x===b));
   document.querySelectorAll('.subsection').forEach(s=>s.classList.toggle('active',s.id===b.dataset.subtab));
 }));
-function runExercise(type){closeModal(); if(type==='breath') startBreath('Langsom udånding',4,7); else openExercise(type)}
-function openExercise(type){const data={grounding:{c:'cyan',cat:'Øvelse',title:'5-4-3-2-1 grounding',feel:'Bruges når kroppen er i alarm, ved dissociation eller tankemylder.',why:'Øvelsen flytter opmærksomheden fra indre trusselsscanning til konkret sansning.',now:'5 ting du kan se. 4 ting du kan mærke. 3 ting du kan høre. 2 ting du kan lugte. 1 ting du kan smage.',react:'Hvis du bliver mere frakoblet eller utryg, så søg kontakt til en anden person.'},muscle:{c:'cyan',cat:'Øvelse',title:'Spænd og slip',feel:'Bruges ved uro, spænding, knyttede hænder eller kropslig alarm.',why:'Når musklerne først spændes bevidst og derefter slippes, kan kroppen registrere forskellen.',now:'Spænd hænder 5 sekunder, slip 10. Spænd skuldre 5, slip 10. Spænd ben 5, slip 10. Gentag.',react:'Undgå øvelsen ved skade eller stærke smerter.'}};openInfo(data[type])}
-let breathTimer=null;
-function startBreath(title,inn,out){
-  showSection('exercises');
-  clearInterval(breathTimer);
-  const box=document.getElementById('modalBox');
-  box.style.color='var(--cyan)';
-  document.getElementById('badge').textContent='Vejrtrækning';
-  document.getElementById('modalTitle').textContent=title;
-  document.getElementById('modalContent').innerHTML=`
-    <div class="breathPopup">
-      <div class="breathCircle" id="breathCircleLive">Klar</div>
-      <p class="muted" id="breathTextLive">Start med at sænke skuldrene.</p>
-      <div class="actionRow">
-        <button class="miniBtn" onclick="startBreath('${title}',${inn},${out})">Start forfra</button>
-        <button class="miniBtn" onclick="closeModal()">Stop</button>
-      </div>
-    </div>`;
-  document.getElementById('modal').showModal();
-  const c=document.getElementById('breathCircleLive'),t=document.getElementById('breathTextLive');
-  let phase=0;
-  function step(){
-    if(phase%2===0){
-      c.textContent='Ind '+inn+' sek';
-      c.classList.add('big');
-      t.textContent='Træk vejret roligt ind gennem næsen.';
-    }else{
-      c.textContent='Ud '+out+' sek';
-      c.classList.remove('big');
-      t.textContent='Pust langsomt ud gennem munden. Udåndingen må gerne være længere.';
-    }
-    phase++;
-  }
-  step();
-  breathTimer=setInterval(step,(inn+out)*500);
+function runExercise(type){
+  closeModal();
+  if(type==='breath') startFingerBreathing();
+  else if(type==='grounding') startGrounding();
+  else startMuscleRelaxation();
 }
+
+let exerciseTimer=null;
+let exerciseAnimation=null;
+let exercisePaused=false;
+let pauseStarted=0;
+let pausedTotal=0;
+
+function stopExerciseActivity(){
+  if(exerciseTimer){clearInterval(exerciseTimer);exerciseTimer=null}
+  if(exerciseAnimation){cancelAnimationFrame(exerciseAnimation);exerciseAnimation=null}
+  exercisePaused=false;pauseStarted=0;pausedTotal=0;
+}
+function prepareExerciseModal(badge,title){
+  stopExerciseActivity();
+  showSection('exercises');
+  const modal=document.getElementById('modal');
+  modal.classList.add('exerciseMode');
+  document.getElementById('modalBox').style.color='var(--cyan)';
+  document.getElementById('badge').textContent=badge;
+  document.getElementById('modalTitle').textContent=title;
+  if(!modal.open) modal.showModal();
+}
+function setPauseButton(paused){
+  const btn=document.getElementById('exercisePause');
+  if(btn) btn.textContent=paused?'Fortsæt':'Pause';
+}
+function toggleExercisePause(){
+  exercisePaused=!exercisePaused;
+  if(exercisePaused){pauseStarted=performance.now()}else if(pauseStarted){pausedTotal+=performance.now()-pauseStarted;pauseStarted=0}
+  setPauseButton(exercisePaused);
+}
+
+/* 1: Finger-vejrtrækning */
+function startFingerBreathing(){
+  prepareExerciseModal('Visuel øvelse','Finger-vejrtrækning');
+  document.getElementById('modalContent').innerHTML=`
+    <div class="visualExercise">
+      <p class="exerciseLead">Følg lyspunktet med øjnene eller din egen finger.</p>
+      <div class="exerciseProgress"><i id="fingerProgress"></i></div>
+      <div class="exerciseStatus" id="fingerStatus">Gør dig klar</div>
+      <p class="exerciseSub" id="fingerSub">Lad vejrtrækningen være rolig. Du skal ikke trække vejret så dybt som muligt.</p>
+      <div class="visualStage">
+        <div class="breathPulse out" id="breathPulse"></div>
+        <svg class="handSvg" viewBox="0 0 280 330" role="img" aria-label="Hånd med et lyspunkt, der bevæger sig langs fingrene">
+          <path class="handFill" d="M79 296C48 268 45 225 62 190l8-69c1-16 24-16 25 0l1 31 2-85c0-17 25-17 25 0v76l4-103c1-18 27-17 27 1v102l4-88c1-17 26-16 26 1v96l5-67c1-16 24-15 24 1v118c0 59-35 98-91 98-17 0-31-2-42-6Z"/>
+          <path id="fingerTracePath" class="tracePath" d="M70 284 C60 255 63 225 76 202 L82 121 L94 184 L110 67 L121 181 L140 41 L151 181 L171 56 L181 187 L201 86 L204 213 C205 257 179 292 139 300"/>
+          <circle id="fingerTraceDot" class="traceDot" cx="70" cy="284" r="8"/>
+        </svg>
+      </div>
+      <div class="fingerCount" id="fingerCount">${'<i></i>'.repeat(5)}</div>
+      <div class="visualControls"><button class="primary" id="exercisePause" onclick="toggleExercisePause()">Pause</button><button class="secondary" onclick="startFingerBreathing()">Start forfra</button><button class="secondary" onclick="closeModal()">Stop</button></div>
+    </div>`;
+  animateFingerBreathing();
+}
+function animateFingerBreathing(){
+  const path=document.getElementById('fingerTracePath');
+  const dot=document.getElementById('fingerTraceDot');
+  const status=document.getElementById('fingerStatus');
+  const sub=document.getElementById('fingerSub');
+  const progress=document.getElementById('fingerProgress');
+  const pulse=document.getElementById('breathPulse');
+  if(!path||!dot)return;
+  const total=path.getTotalLength();
+  const phases=[
+    {name:'Ind',text:'Træk vejret roligt ind',duration:3000},
+    {name:'Ud',text:'Pust langsomt ud',duration:5000}
+  ];
+  const totalPhases=10;
+  let phaseIndex=0, phaseStart=performance.now();
+  pausedTotal=0; pauseStarted=0; exercisePaused=false;
+  function frame(now){
+    if(!document.getElementById('fingerTraceDot'))return;
+    if(exercisePaused){exerciseAnimation=requestAnimationFrame(frame);return}
+    const effectiveStart=phaseStart+pausedTotal;
+    const phase=phases[phaseIndex%2];
+    const elapsed=now-effectiveStart;
+    const ratio=Math.min(1,elapsed/phase.duration);
+    const overall=(phaseIndex+ratio)/totalPhases;
+    const point=path.getPointAtLength(total*overall);
+    dot.setAttribute('cx',point.x);dot.setAttribute('cy',point.y);
+    status.textContent=phase.name;
+    sub.textContent=phase.text+(phase.name==='Ud'?' – lidt længere end indåndingen.':'.');
+    pulse.className='breathPulse '+(phase.name==='Ind'?'in':'out');
+    progress.style.width=(overall*100)+'%';
+    document.querySelectorAll('#fingerCount i').forEach((el,i)=>el.classList.toggle('done',i<Math.floor((phaseIndex+1)/2)));
+    if(ratio>=1){
+      phaseIndex++;phaseStart=now;pausedTotal=0;pauseStarted=0;
+      if(phaseIndex>=totalPhases){
+        status.textContent='Færdig';sub.textContent='Bliv siddende et øjeblik og mærk, om kroppen har ændret sig bare en smule.';
+        progress.style.width='100%';document.querySelectorAll('#fingerCount i').forEach(el=>el.classList.add('done'));
+        pulse.className='breathPulse out';return;
+      }
+    }
+    exerciseAnimation=requestAnimationFrame(frame);
+  }
+  exerciseAnimation=requestAnimationFrame(frame);
+}
+
+/* 2: Visuel 5-4-3-2-1 grounding */
+const groundingData=[
+  {count:5,icon:'👁️',title:'Find 5 ting, du kan se',hint:'Læg mærke til farve, form eller størrelse.'},
+  {count:4,icon:'✋',title:'Find 4 ting, du kan mærke',hint:'Fx fødderne mod gulvet, tøjet eller stolen.'},
+  {count:3,icon:'👂',title:'Find 3 lyde, du kan høre',hint:'Nære eller fjerne lyde tæller begge.'},
+  {count:2,icon:'👃',title:'Find 2 ting, du kan lugte',hint:'Kan du ikke finde en lugt, så tænk på to velkendte dufte.'},
+  {count:1,icon:'🌿',title:'Find 1 ting, du kan smage',hint:'Eller tag én rolig vejrtrækning og mærk luften.'}
+];
+let groundingIndex=0;
+function startGrounding(){groundingIndex=0;prepareExerciseModal('Visuel øvelse','5-4-3-2-1 grounding');renderGroundingStep()}
+function renderGroundingStep(){
+  const content=document.getElementById('modalContent');
+  if(groundingIndex>=groundingData.length){
+    content.innerHTML=`<div class="visualExercise"><div class="groundingSteps">${groundingData.map(()=>'<i class="done"></i>').join('')}</div><div class="visualStage"><div><div class="groundingDone">✓</div><div class="groundingTarget">Du er færdig</div><p class="exerciseLead">Se dig omkring igen. Du er her lige nu. Angsten må gerne være der, mens kroppen falder til ro.</p></div></div><div class="visualControls"><button class="primary" onclick="startGrounding()">Start forfra</button><button class="secondary" onclick="closeModal()">Luk</button></div></div>`;
+    return;
+  }
+  const step=groundingData[groundingIndex];
+  content.innerHTML=`
+    <div class="visualExercise">
+      <div class="groundingSteps">${groundingData.map((_,i)=>`<i class="${i<groundingIndex?'done':i===groundingIndex?'current':''}"></i>`).join('')}</div>
+      <p class="exerciseSub">Trin ${groundingIndex+1} af 5</p>
+      <div class="visualStage"><div><div class="groundingIcon">${step.icon}</div><div class="groundingTarget">${step.title}</div><p class="exerciseLead">${step.hint}</p><div class="senseDots">${Array.from({length:step.count},(_,i)=>`<button class="senseDot" aria-label="Markér nummer ${i+1} som fundet" onclick="markSense(this)"><span>${i+1}</span></button>`).join('')}</div><p class="muted" id="senseCounter">0 af ${step.count} fundet</p></div></div>
+      <div class="visualControls"><button class="secondary" onclick="skipGroundingStep()">Spring over</button><button class="primary" id="groundingNext" onclick="nextGroundingStep()" disabled>Næste</button><button class="secondary" onclick="closeModal()">Stop</button></div>
+    </div>`;
+}
+function markSense(btn){
+  btn.classList.toggle('found');
+  const all=[...document.querySelectorAll('.senseDot')],found=all.filter(x=>x.classList.contains('found')).length;
+  const counter=document.getElementById('senseCounter');if(counter)counter.textContent=`${found} af ${all.length} fundet`;
+  const next=document.getElementById('groundingNext');if(next)next.disabled=found<all.length;
+  if(navigator.vibrate)navigator.vibrate(20);
+}
+function nextGroundingStep(){groundingIndex++;renderGroundingStep()}
+function skipGroundingStep(){groundingIndex++;renderGroundingStep()}
+
+/* 3: Visuel progressiv muskelafspænding */
+const muscleAreas=[
+  {id:'hands',name:'Hænder',tense:'Knyt hænderne forsigtigt',relax:'Åbn hænderne og mærk forskellen'},
+  {id:'shoulders',name:'Skuldre',tense:'Løft skuldrene forsigtigt mod ørerne',relax:'Lad skuldrene falde helt ned'},
+  {id:'jaw',name:'Kæbe',tense:'Bid meget let sammen – uden at presse',relax:'Slip kæben og lad læberne være bløde'},
+  {id:'stomach',name:'Mave',tense:'Spænd forsigtigt i mavemusklerne',relax:'Slip spændingen og lad maven være fri'},
+  {id:'legs',name:'Ben',tense:'Pres fødderne roligt mod gulvet',relax:'Slip trykket og mærk underlaget'}
+];
+let muscleIndex=0,musclePhase='ready',muscleRemaining=0;
+function startMuscleRelaxation(){
+  muscleIndex=0;musclePhase='ready';
+  prepareExerciseModal('Visuel øvelse','Spænd og slip');
+  renderMuscleExercise();
+}
+function bodySvgMarkup(){return `<svg class="bodySvg" viewBox="0 0 220 420" role="img" aria-label="Kropsfigur hvor det aktive område lyser">
+  <circle class="bodyBase" cx="110" cy="42" r="30"/>
+  <path class="bodyBase" d="M78 79Q110 66 142 79L158 184 143 251H77L62 184Z"/>
+  <path class="bodyBase" d="M79 92 47 190 61 199 91 118ZM141 92l32 98-14 9-30-81Z"/>
+  <path class="bodyBase" d="M82 245 68 391 91 394 110 270 129 394 152 391 138 245Z"/>
+  <circle class="bodyPart" data-part="jaw" cx="110" cy="55" r="14"/>
+  <path class="bodyPart" data-part="shoulders" d="M72 88Q110 67 148 88L143 113Q110 94 77 113Z"/>
+  <circle class="bodyPart" data-part="hands" cx="54" cy="203" r="18"/><circle class="bodyPart" data-part="hands" cx="166" cy="203" r="18"/>
+  <ellipse class="bodyPart" data-part="stomach" cx="110" cy="190" rx="34" ry="43"/>
+  <path class="bodyPart" data-part="legs" d="M82 250 68 391 91 394 110 270 129 394 152 391 138 250 110 267Z"/>
+</svg>`}
+function renderMuscleExercise(){
+  const area=muscleAreas[muscleIndex];
+  document.getElementById('modalContent').innerHTML=`
+    <div class="visualExercise">
+      <div class="exerciseProgress"><i id="muscleProgress" style="width:${(muscleIndex/muscleAreas.length)*100}%"></i></div>
+      <div class="exerciseStatus" id="muscleStatus">Område ${muscleIndex+1} af ${muscleAreas.length}</div>
+      <p class="exerciseSub" id="muscleInstruction">Tryk start, når du er klar.</p>
+      <div class="visualStage"><div class="countRing" id="muscleCount">–</div><div class="muscleLayout">${bodySvgMarkup()}<div class="muscleAreaName">${area.name}</div></div></div>
+      <p class="safetyNote">Spænd kun let. Spring området over ved smerter, skade eller ubehag.</p>
+      <div class="visualControls"><button class="primary" id="muscleMain" onclick="beginMuscleArea()">Start området</button><button class="secondary" onclick="skipMuscleArea()">Spring over</button><button class="secondary" onclick="closeModal()">Stop</button></div>
+    </div>`;
+  highlightMusclePart('ready',area.id);
+}
+function highlightMusclePart(mode,id){
+  document.querySelectorAll('.bodyPart').forEach(el=>{el.classList.remove('activeReady','activeTense','activeRelax');if(el.dataset.part===id&&mode)el.classList.add(mode==='tense'?'activeTense':mode==='relax'?'activeRelax':'activeReady')});
+}
+function beginMuscleArea(){
+  if(exerciseTimer)clearInterval(exerciseTimer);
+  exercisePaused=false;setPauseButton(false);
+  musclePhase='tense';muscleRemaining=5;
+  const main=document.getElementById('muscleMain');if(main){main.textContent='Pause';main.onclick=toggleMusclePause}
+  updateMuscleVisual();
+  exerciseTimer=setInterval(()=>{if(exercisePaused)return;muscleRemaining--;if(muscleRemaining<=0){
+    if(musclePhase==='tense'){musclePhase='relax';muscleRemaining=10}else{clearInterval(exerciseTimer);exerciseTimer=null;finishMuscleArea();return}
+  }updateMuscleVisual()},1000);
+}
+function toggleMusclePause(){exercisePaused=!exercisePaused;const main=document.getElementById('muscleMain');if(main)main.textContent=exercisePaused?'Fortsæt':'Pause'}
+function updateMuscleVisual(){
+  const area=muscleAreas[muscleIndex],tense=musclePhase==='tense';
+  const status=document.getElementById('muscleStatus'),instruction=document.getElementById('muscleInstruction'),count=document.getElementById('muscleCount');
+  if(status)status.textContent=tense?'SPÆND FORSIGTIGT':'SLIP HELT';
+  if(instruction)instruction.textContent=tense?area.tense:area.relax;
+  if(count){count.textContent=muscleRemaining;count.className='countRing '+(tense?'tense':'relax')}
+  highlightMusclePart(tense?'tense':'relax',area.id);
+  const progress=document.getElementById('muscleProgress');if(progress){const phasePart=tense?(5-muscleRemaining)/15:(5+(10-muscleRemaining))/15;progress.style.width=((muscleIndex+phasePart)/muscleAreas.length*100)+'%'}
+  if(navigator.vibrate&&muscleRemaining===1)navigator.vibrate(25);
+}
+function finishMuscleArea(){
+  muscleIndex++;
+  if(muscleIndex>=muscleAreas.length){
+    document.getElementById('modalContent').innerHTML=`<div class="visualExercise"><div class="exerciseProgress"><i style="width:100%"></i></div><div class="visualStage"><div><div class="groundingDone">✓</div><div class="groundingTarget">Øvelsen er færdig</div><p class="exerciseLead">Læg mærke til forskellen mellem spænding og afspænding. Den behøver ikke være stor for at tælle.</p></div></div><div class="visualControls"><button class="primary" onclick="startMuscleRelaxation()">Start forfra</button><button class="secondary" onclick="closeModal()">Luk</button></div></div>`;return;
+  }
+  renderMuscleExercise();
+}
+function skipMuscleArea(){if(exerciseTimer){clearInterval(exerciseTimer);exerciseTimer=null}finishMuscleArea()}
+
 const trackNames=Object.entries(symptoms).map(([id,o])=>[id,o.title.split(':')[0]]);const grid=document.getElementById('trackerGrid');trackNames.forEach(([id,name])=>{const lab=document.createElement('label');lab.className='check';lab.innerHTML=`<input type="checkbox" value="${id}"><span>${name}</span>`;grid.appendChild(lab)});
 function storageGet(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch(e){return fallback}}
 function storageSet(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch(e){return false}}
@@ -382,7 +625,7 @@ function saveTracker(){
   document.getElementById('trackerResult').textContent=saved?`Gemt.\n\nHyppigste symptomer på denne enhed:\n${top}`:'Kunne ikke gemme. Tjek at lokal lagring ikke er blokeret i din browser (fx privat/inkognito-tilstand).';
 }
 
-const exerciseCatalog={breath:{name:'Langsom udånding',run:"startBreath('Langsom udånding',4,7)"},grounding:{name:'5-4-3-2-1 grounding',run:"openExercise('grounding')"},muscle:{name:'Spænd og slip',run:"openExercise('muscle')"}};
+const exerciseCatalog={breath:{name:'Finger-vejrtrækning',run:'startFingerBreathing()'},grounding:{name:'5-4-3-2-1 grounding',run:'startGrounding()'},muscle:{name:'Spænd og slip',run:'startMuscleRelaxation()'}};
 function getFavs(){return storageGet('angstFavs',[])}
 function toggleFavorite(id){let favs=getFavs();favs=favs.includes(id)?favs.filter(x=>x!==id):[...favs,id];storageSet('angstFavs',favs);renderFavs()}
 function renderFavs(){const el=document.getElementById('favList');if(!el)return;const favs=getFavs();if(!favs.length){el.innerHTML='<p class="muted">Ingen favoritter endnu.</p>';return}el.innerHTML=favs.map(id=>`<div class="favItem"><span>⭐ ${exerciseCatalog[id].name}</span><button class="miniBtn" onclick="${exerciseCatalog[id].run}">Start</button></div>`).join('')}
@@ -455,7 +698,7 @@ updateInstallButton();
 
     window.addEventListener('load', async () => {
       try {
-        const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260619-02', { updateViaCache: 'none' });
+        const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260619-03', { updateViaCache: 'none' });
 
         const forceNewWorker = worker => {
           if (!worker) return;
