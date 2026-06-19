@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-  <title>Angst – kroppens reaktioner V7</title>
-  <!-- V7: seks visuelle, interaktive øvelser -->
+  <title>Angst – kroppens reaktioner V8</title>
+  <!-- V8: seks visuelle øvelser og offline lydfane -->
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#05060a">
   <meta name="mobile-web-app-capable" content="yes">
@@ -27,7 +27,7 @@
     .toolbar{padding:12px 14px 0}.quick{display:grid;grid-template-columns:1fr;gap:10px}.quick button{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 16px;border-radius:18px;background:#ffffff08;color:#fff;border:1px solid #ffffff22;text-align:left;font-size:17px;font-weight:750}.quick span{font-size:28px}.pink{border-color:#ff3aa680!important;color:var(--pink)}.cyan{border-color:#00e6e680!important;color:var(--cyan)}.orange{border-color:#ff8a0080!important;color:var(--orange)}
     .section{display:none;padding:16px 16px 0}.section.active{display:block}.card{border:1px solid #ffffff18;background:linear-gradient(180deg,#15151fe8,#0b0b10e8);border-radius:var(--radius);padding:16px;margin-bottom:12px}.card h2,.card h3{margin:0 0 10px}.card p{color:#ddd;line-height:1.45}.list{display:grid;gap:10px}.exercise{border:1px solid #ffffff18;border-radius:18px;padding:14px;background:#ffffff07}.exercise button,.primary{margin-top:10px;border:1px solid #ffffff30;background:#ffffff10;color:#fff;border-radius:999px;padding:10px 14px;font-weight:700}.breathCircle{width:180px;height:180px;border-radius:50%;border:2px solid var(--cyan);margin:18px auto;display:grid;place-items:center;font-size:24px;box-shadow:0 0 28px #00e6e655;transition:transform 4s ease}.breathCircle.big{transform:scale(1.25)}
     .tracker-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{display:flex;gap:8px;align-items:center;border:1px solid #ffffff18;border-radius:14px;padding:10px;background:#ffffff07;font-size:14px}.check input{accent-color:var(--pink)}.result{white-space:pre-line;color:#ddd;background:#0005;border-radius:14px;padding:12px;margin-top:12px}
-    .bottomnav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,460px);z-index:20;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:8px 8px calc(env(safe-area-inset-bottom) + 8px);background:#05060af0;border-top:1px solid #ffffff18;backdrop-filter:blur(12px)}.bottomnav button{border:0;background:transparent;color:#bdbdcc;padding:8px 4px;border-radius:14px;font-size:12px}.bottomnav button b{display:block;font-size:20px}.bottomnav button.active{background:#ffffff12;color:#fff}
+    .bottomnav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,460px);z-index:20;display:grid;grid-template-columns:repeat(6,1fr);gap:4px;padding:8px 8px calc(env(safe-area-inset-bottom) + 8px);background:#05060af0;border-top:1px solid #ffffff18;backdrop-filter:blur(12px)}.bottomnav button{border:0;background:transparent;color:#bdbdcc;padding:8px 2px;border-radius:14px;font-size:11px;min-width:0}.bottomnav button b{display:block;font-size:19px}.bottomnav button.active{background:#ffffff12;color:#fff}
     dialog{border:0;padding:0;background:transparent;color:#fff;width:min(94vw,440px);max-width:440px}dialog::backdrop{background:#000b;backdrop-filter:blur(4px)}.modal{border:1px solid currentColor;background:linear-gradient(180deg,#15151ef7,#08080df7);border-radius:24px;box-shadow:0 20px 80px #000;padding:18px;max-height:82svh;overflow:auto}.modalTop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.modal h2{margin:4px 0 10px;font-size:24px}.close{border:1px solid #ffffff33;background:#ffffff10;color:#fff;border-radius:50%;width:40px;height:40px;font-size:25px}.badge{display:inline-block;border:1px solid currentColor;border-radius:999px;padding:5px 9px;font-size:12px;margin-bottom:8px}.block{border-top:1px solid #ffffff18;padding-top:12px;margin-top:12px}.block h3{margin:0 0 6px;color:currentColor;font-size:16px}.block p{margin:0;color:#eee;line-height:1.45}.danger{color:#ff6b7b}.safe{color:#32d17d}.muted{color:var(--muted)}
     .modal{scrollbar-width:thin;scrollbar-color:currentColor #ffffff12}
     .modal::-webkit-scrollbar{width:10px}
@@ -191,6 +191,30 @@
     .colorSwatches{display:flex;justify-content:center;gap:8px;margin:10px 0}.colorSwatches i{width:25px;height:8px;border-radius:999px;background:#ffffff18;transition:.2s}.colorSwatches i.done{background:var(--swatch);box-shadow:0 0 10px var(--swatch)}.colorSwatches i.current{background:var(--swatch);box-shadow:0 0 16px var(--swatch);transform:scaleY(1.45)}
     .colorName{font-size:30px;font-weight:950;margin:8px 0 4px}
 
+
+    /* Rolige lyde */
+    .soundIntro{border-color:#00e6e63a;background:radial-gradient(circle at 80% 10%,#00e6e612,transparent 42%),linear-gradient(180deg,#15151fe8,#0b0b10e8)}
+    .soundGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+    .soundCard{position:relative;border:1px solid #ffffff18;border-radius:20px;padding:14px 12px;background:linear-gradient(155deg,#171722,#0a0a10);min-height:172px;display:flex;flex-direction:column;align-items:flex-start;overflow:hidden}
+    .soundCard::after{content:'';position:absolute;width:90px;height:90px;border-radius:50%;right:-35px;top:-35px;background:var(--sound-color,#00e6e6);opacity:.11;filter:blur(3px)}
+    .soundIcon{font-size:38px;line-height:1;margin-bottom:12px;filter:drop-shadow(0 0 14px var(--sound-color,#00e6e6))}
+    .soundCard h3{font-size:17px;margin:0 0 6px;line-height:1.15}.soundCard p{font-size:13px;color:#c7c7d0;margin:0 0 12px;line-height:1.35}
+    .soundCard button{margin-top:auto;width:100%;border:1px solid var(--sound-color,#00e6e6);background:#ffffff08;color:#fff;border-radius:999px;padding:9px 10px;font-weight:850}
+    .soundCard.playing{border-color:var(--sound-color,#00e6e6);box-shadow:0 0 22px color-mix(in srgb,var(--sound-color,#00e6e6) 25%,transparent)}
+    .soundCard.playing button{background:color-mix(in srgb,var(--sound-color,#00e6e6) 20%,transparent)}
+    .soundPlayer{display:none;position:relative;overflow:hidden;border-color:#00e6e64d;background:radial-gradient(circle at 50% 0,#00e6e61c,transparent 45%),linear-gradient(180deg,#14141f,#09090e)}
+    .soundPlayer.show{display:block}.soundPlayerTop{display:flex;align-items:center;gap:14px}.soundOrb{--sound-active:#00e6e6;width:72px;height:72px;flex:0 0 72px;border-radius:50%;display:grid;place-items:center;font-size:30px;background:radial-gradient(circle,#ffffff22 0 28%,var(--sound-active) 32%,#09090e 72%);box-shadow:0 0 24px color-mix(in srgb,var(--sound-active) 60%,transparent)}
+    .soundPlayer.playing .soundOrb{animation:soundPulse 2.7s ease-in-out infinite}.soundPlayer.paused .soundOrb{opacity:.66}
+    @keyframes soundPulse{0%,100%{transform:scale(.92);box-shadow:0 0 18px color-mix(in srgb,var(--sound-active) 45%,transparent)}50%{transform:scale(1.04);box-shadow:0 0 38px color-mix(in srgb,var(--sound-active) 75%,transparent)}}
+    .soundMeta{min-width:0}.soundMeta small{display:block;color:var(--cyan);font-weight:850;margin-bottom:4px}.soundMeta h2{font-size:22px;margin:0 0 5px}.soundMeta p{font-size:13px;margin:0;color:#c7c7d0}
+    .soundTimeline{height:7px;border-radius:999px;background:#ffffff15;overflow:hidden;margin:16px 0 7px}.soundTimeline i{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--cyan),var(--pink));border-radius:999px;box-shadow:0 0 12px #00e6e6}
+    .soundTimes{display:flex;justify-content:space-between;color:#aeb0ba;font-size:12px}
+    .soundControls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px}.soundControls button{border:1px solid #ffffff2b;background:#ffffff0d;color:#fff;border-radius:999px;padding:11px 12px;font-weight:850}.soundControls .soundPrimary{border-color:var(--cyan);background:#00e6e616}
+    .volumeRow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;margin-top:16px;color:#d7d7df}.volumeRow input{width:100%;accent-color:var(--cyan)}
+    .timerTitle{font-weight:850;font-size:14px;margin:16px 0 8px}.timerButtons{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.timerButtons button{border:1px solid #ffffff20;background:#ffffff08;color:#d7d7df;border-radius:12px;padding:9px 3px;font-size:12px}.timerButtons button.active{border-color:var(--pink);color:#fff;background:#ff3aa619;box-shadow:0 0 13px #ff3aa633}
+    .soundTimerStatus{min-height:18px;margin-top:9px;font-size:13px;color:#ffbddd}.soundNote{font-size:13px;color:#bfc0ca;line-height:1.45;margin:0}.soundLegal{font-size:12px;color:#8f919d;margin-top:9px}
+    @media(max-width:360px){.soundGrid{grid-template-columns:1fr}.soundCard{min-height:145px}.timerButtons{grid-template-columns:repeat(3,1fr)}}
+
     @media (max-height:720px){
       dialog.exerciseMode .modal{padding:12px}.visualStage{min-height:210px}.bodySvg{height:270px}.handSvg{width:245px}.groundingIcon{font-size:60px}.groundingTarget{font-size:23px}.senseDot{width:45px;height:45px}
     }
@@ -344,6 +368,36 @@
       <div class="card"><h3>Brug appen rigtigt</h3><p>Den er psykoedukation og støtte. Den erstatter ikke lægelig vurdering, terapi eller akut hjælp.</p></div>
     </section>
 
+
+    <section id="sounds" class="section">
+      <div class="card soundIntro"><h2>Rolige lyde</h2><p>Vælg den lyd, der føles mest behagelig. Start ved lav lydstyrke. Lyden kan fortsætte, mens du bruger en øvelse.</p></div>
+
+      <div class="card soundPlayer" id="soundPlayer">
+        <div class="soundPlayerTop">
+          <div class="soundOrb" id="soundOrb">♪</div>
+          <div class="soundMeta"><small id="soundState">Klar</small><h2 id="soundTitle">Vælg en lyd</h2><p id="soundDescription">Afspilleren vises, når du starter et spor.</p></div>
+        </div>
+        <div class="soundTimeline"><i id="soundProgress"></i></div>
+        <div class="soundTimes"><span id="soundCurrent">0:00</span><span id="soundDuration">1:00</span></div>
+        <div class="soundControls"><button class="soundPrimary" id="soundPauseBtn" type="button" onclick="toggleCalmAudio()">Pause</button><button type="button" onclick="stopCalmAudio()">Stop</button></div>
+        <label class="volumeRow" for="soundVolume"><span>🔈</span><input id="soundVolume" type="range" min="0" max="1" step="0.05" value="0.45"><span>🔊</span></label>
+        <div class="timerTitle">Sluk-timer</div>
+        <div class="timerButtons" id="soundTimerButtons">
+          <button type="button" data-minutes="0" class="active">Fra</button><button type="button" data-minutes="5">5 min</button><button type="button" data-minutes="10">10 min</button><button type="button" data-minutes="20">20 min</button><button type="button" data-minutes="30">30 min</button>
+        </div>
+        <div class="soundTimerStatus" id="soundTimerStatus"></div>
+      </div>
+
+      <div class="soundGrid">
+        <article class="soundCard" data-sound-id="rhythm" style="--sound-color:#00e6e6"><div class="soundIcon">✨</div><h3>Rolig rytme</h3><p>Varme, langsomme toner uden pludselige skift.</p><button type="button" onclick="playCalmSound('rhythm')">Afspil</button></article>
+        <article class="soundCard" data-sound-id="forest" style="--sound-color:#32d17d"><div class="soundIcon">🌲</div><h3>Fredelig skov</h3><p>Blid vind, raslen og diskrete fuglelyde.</p><button type="button" onclick="playCalmSound('forest')">Afspil</button></article>
+        <article class="soundCard" data-sound-id="space" style="--sound-color:#9f7cff"><div class="soundIcon">🌌</div><h3>Stille rum</h3><p>Dybe, langsomme klange med god plads mellem tonerne.</p><button type="button" onclick="playCalmSound('space')">Afspil</button></article>
+        <article class="soundCard" data-sound-id="piano" style="--sound-color:#ff8a00"><div class="soundIcon">🎹</div><h3>Bløde klavertoner</h3><p>Enkle toner over en rolig, varm baggrund.</p><button type="button" onclick="playCalmSound('piano')">Afspil</button></article>
+      </div>
+      <div class="card"><p class="soundNote"><strong>Vigtigt:</strong> Lyde virker forskelligt. Stop afspilningen, hvis du bliver mere urolig, får hovedpine eller føler dig overstimuleret.</p><p class="soundLegal">Lydsporene ligger lokalt i appen og kan bruges uden internet.</p></div>
+      <audio id="calmAudio" preload="metadata" loop></audio>
+    </section>
+
     <section id="tracker" class="section">
       <div class="card"><h2>Dagens registrering</h2><p>Gemmes kun lokalt på denne enhed.</p><div class="tracker-grid" id="trackerGrid"></div><button class="primary" onclick="saveTracker()">Gem dagens symptomer</button><div class="result" id="trackerResult"></div></div>
     </section>
@@ -355,6 +409,7 @@
   <button data-section="panic"><b>🆘</b>Akut</button>
   <button data-section="exercises"><b>🫁</b>Øvelser</button>
   <button data-section="understanding"><b>📚</b>Forstå</button>
+  <button data-section="sounds"><b>🎧</b>Lyd</button>
   <button data-section="tracker"><b>✓</b>Tracker</button>
 </nav>
 
@@ -816,6 +871,99 @@ function renderColorHunt(){
 function foundColorHunt(){if(navigator.vibrate)navigator.vibrate(20);colorHuntIndex++;renderColorHunt()}
 function skipColorHunt(){colorHuntIndex++;renderColorHunt()}
 
+
+/* Rolige lyde */
+const calmTracks={
+  rhythm:{title:'Rolig rytme',description:'Varme, langsomme toner uden pludselige skift.',src:'audio/rolig-rytme.mp3',icon:'✨',color:'#00e6e6'},
+  forest:{title:'Fredelig skov',description:'Blid vind, raslen og diskrete fuglelyde.',src:'audio/fredelig-skov.mp3',icon:'🌲',color:'#32d17d'},
+  space:{title:'Stille rum',description:'Dybe, langsomme klange med god plads mellem tonerne.',src:'audio/stille-rum.mp3',icon:'🌌',color:'#9f7cff'},
+  piano:{title:'Bløde klavertoner',description:'Enkle toner over en rolig, varm baggrund.',src:'audio/bloede-klavertoner.mp3',icon:'🎹',color:'#ff8a00'}
+};
+const calmAudio=document.getElementById('calmAudio');
+const soundPlayer=document.getElementById('soundPlayer');
+let activeCalmTrack=null;
+let soundTimerEndsAt=0;
+let soundTimerInterval=null;
+
+function formatAudioTime(seconds){
+  if(!Number.isFinite(seconds)||seconds<0)return '0:00';
+  const whole=Math.floor(seconds);return `${Math.floor(whole/60)}:${String(whole%60).padStart(2,'0')}`;
+}
+function updateSoundCards(){
+  document.querySelectorAll('.soundCard').forEach(card=>{
+    const active=card.dataset.soundId===activeCalmTrack && !calmAudio.paused;
+    card.classList.toggle('playing',active);
+    const btn=card.querySelector('button');if(btn)btn.textContent=active?'Spiller nu':'Afspil';
+  });
+}
+function updateSoundPlayer(){
+  if(!soundPlayer||!calmAudio)return;
+  soundPlayer.classList.toggle('playing',!!activeCalmTrack&&!calmAudio.paused);
+  soundPlayer.classList.toggle('paused',!!activeCalmTrack&&calmAudio.paused);
+  const pauseBtn=document.getElementById('soundPauseBtn');if(pauseBtn)pauseBtn.textContent=calmAudio.paused?'Fortsæt':'Pause';
+  const state=document.getElementById('soundState');if(state)state.textContent=!activeCalmTrack?'Klar':calmAudio.paused?'Sat på pause':'Afspiller';
+  const duration=Number.isFinite(calmAudio.duration)?calmAudio.duration:60;
+  document.getElementById('soundCurrent').textContent=formatAudioTime(calmAudio.currentTime);
+  document.getElementById('soundDuration').textContent=formatAudioTime(duration);
+  document.getElementById('soundProgress').style.width=`${duration?Math.min(100,(calmAudio.currentTime/duration)*100):0}%`;
+  updateSoundCards();
+}
+async function playCalmSound(id){
+  const track=calmTracks[id];if(!track)return;
+  soundPlayer.classList.add('show');
+  if(activeCalmTrack!==id){calmAudio.src=track.src;calmAudio.currentTime=0;activeCalmTrack=id}
+  document.getElementById('soundTitle').textContent=track.title;
+  document.getElementById('soundDescription').textContent=track.description;
+  document.getElementById('soundOrb').textContent=track.icon;
+  document.getElementById('soundOrb').style.setProperty('--sound-active',track.color);
+  try{
+    await calmAudio.play();
+    storageSet('angstLastSound',id);
+    if('mediaSession' in navigator){
+      try{navigator.mediaSession.metadata=new MediaMetadata({title:track.title,artist:'Angst – rolige lyde',album:'Offline lyd'})}catch(e){}
+      [['play',()=>calmAudio.play()],['pause',()=>calmAudio.pause()],['stop',stopCalmAudio]].forEach(([action,handler])=>{try{navigator.mediaSession.setActionHandler(action,handler)}catch(e){}})
+    }
+  }catch(e){document.getElementById('soundState').textContent='Kunne ikke starte lyden – prøv igen'}
+  updateSoundPlayer();
+}
+function toggleCalmAudio(){
+  if(!activeCalmTrack){const last=storageGet('angstLastSound','rhythm');playCalmSound(calmTracks[last]?last:'rhythm');return}
+  if(calmAudio.paused)calmAudio.play().catch(()=>{});else calmAudio.pause();
+  updateSoundPlayer();
+}
+function stopCalmAudio(){
+  calmAudio.pause();calmAudio.currentTime=0;activeCalmTrack=null;
+  clearSoundTimer();
+  if(soundPlayer)soundPlayer.classList.remove('show','playing','paused');
+  updateSoundCards();
+}
+function clearSoundTimer(){
+  soundTimerEndsAt=0;if(soundTimerInterval){clearInterval(soundTimerInterval);soundTimerInterval=null}
+  document.querySelectorAll('#soundTimerButtons button').forEach(b=>b.classList.toggle('active',b.dataset.minutes==='0'));
+  const status=document.getElementById('soundTimerStatus');if(status)status.textContent='';
+}
+function setSoundTimer(minutes){
+  if(soundTimerInterval){clearInterval(soundTimerInterval);soundTimerInterval=null}
+  const mins=Number(minutes)||0;
+  document.querySelectorAll('#soundTimerButtons button').forEach(b=>b.classList.toggle('active',Number(b.dataset.minutes)===mins));
+  if(!mins){soundTimerEndsAt=0;document.getElementById('soundTimerStatus').textContent='';return}
+  soundTimerEndsAt=Date.now()+mins*60000;
+  const tick=()=>{
+    const left=Math.max(0,soundTimerEndsAt-Date.now());
+    if(left<=0){stopCalmAudio();return}
+    const totalSeconds=Math.ceil(left/1000);const mm=Math.floor(totalSeconds/60);const ss=String(totalSeconds%60).padStart(2,'0');
+    document.getElementById('soundTimerStatus').textContent=`Stopper automatisk om ${mm}:${ss}`;
+  };
+  tick();soundTimerInterval=setInterval(tick,1000);
+}
+calmAudio?.addEventListener('timeupdate',updateSoundPlayer);
+calmAudio?.addEventListener('play',updateSoundPlayer);
+calmAudio?.addEventListener('pause',updateSoundPlayer);
+calmAudio?.addEventListener('loadedmetadata',updateSoundPlayer);
+document.getElementById('soundVolume')?.addEventListener('input',e=>{calmAudio.volume=Number(e.target.value)});
+document.querySelectorAll('#soundTimerButtons button').forEach(b=>b.addEventListener('click',()=>setSoundTimer(b.dataset.minutes)));
+if(calmAudio)calmAudio.volume=.45;
+
 const trackNames=Object.entries(symptoms).map(([id,o])=>[id,o.title.split(':')[0]]);const grid=document.getElementById('trackerGrid');trackNames.forEach(([id,name])=>{const lab=document.createElement('label');lab.className='check';lab.innerHTML=`<input type="checkbox" value="${id}"><span>${name}</span>`;grid.appendChild(lab)});
 function storageGet(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch(e){return fallback}}
 function storageSet(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch(e){return false}}
@@ -902,7 +1050,7 @@ updateInstallButton();
 
     window.addEventListener('load', async () => {
       try {
-        const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260619-04', { updateViaCache: 'none' });
+        const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260619-05', { updateViaCache: 'none' });
 
         const forceNewWorker = worker => {
           if (!worker) return;

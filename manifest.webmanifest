@@ -1,7 +1,7 @@
 {
   "name": "Angst – kroppens reaktioner",
   "short_name": "Angst",
-  "description": "Psykoedukativ webapp om kroppens reaktioner ved angst.",
+  "description": "Psykoedukativ webapp om angst med visuelle øvelser og rolige offline-lyde.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

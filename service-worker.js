@@ -1,4 +1,4 @@
-const CACHE_NAME = 'angst-v7-seks-visuelle-oevelser-20260619-01';
+const CACHE_NAME = 'angst-v8-rolige-lyde-20260619-01';
 const ASSETS = [
   './',
   './index.html',
@@ -10,7 +10,11 @@ const ASSETS = [
   './icons/icon-144.png',
   './icons/icon-180.png',
   './icons/icon-192.png',
-  './icons/icon-512.png'
+  './icons/icon-512.png',
+  './audio/rolig-rytme.mp3',
+  './audio/fredelig-skov.mp3',
+  './audio/stille-rum.mp3',
+  './audio/bloede-klavertoner.mp3'
 ];
 
 self.addEventListener('install', event => {
