@@ -1,4 +1,4 @@
-const CACHE_NAME = 'angst-v4-forstaaelse-20260618-02';
+const CACHE_NAME = 'angst-v4-forstaaelse-20260619-01';
 const ASSETS = [
   './',
   './index.html',
