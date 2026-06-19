@@ -1,4 +1,4 @@
-const CACHE_NAME = 'angst-v6-visuelle-oevelser-20260619-01';
+const CACHE_NAME = 'angst-v7-seks-visuelle-oevelser-20260619-01';
 const ASSETS = [
   './',
   './index.html',

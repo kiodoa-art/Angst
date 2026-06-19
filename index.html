@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-  <title>Angst – kroppens reaktioner V6</title>
-  <!-- V6: tre visuelle, interaktive øvelser -->
+  <title>Angst – kroppens reaktioner V7</title>
+  <!-- V7: seks visuelle, interaktive øvelser -->
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#05060a">
   <meta name="mobile-web-app-capable" content="yes">
@@ -111,7 +111,7 @@
     .pinkText{color:var(--pink)}.orangeText{color:var(--orange)}.cyanText{color:var(--cyan)}
 
 
-    /* VISUELLE ØVELSER V6 */
+    /* VISUELLE ØVELSER V7 */
     .exercise{position:relative;overflow:hidden;padding:0;background:linear-gradient(145deg,#171722,#0a0a10)}
     .exercisePreview{height:118px;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#00e6e622,transparent 62%);border-bottom:1px solid #ffffff12}
     .exercisePreview svg{width:105px;height:105px;filter:drop-shadow(0 0 14px #00e6e650)}
@@ -163,6 +163,33 @@
     .countRing{position:absolute;right:15px;top:15px;width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:#08080ddd;border:4px solid #ffffff18;font-size:24px;font-weight:950;box-shadow:0 0 24px #000}
     .countRing.tense{border-color:var(--pink);color:var(--pink);box-shadow:0 0 22px #ff3aa644}.countRing.relax{border-color:var(--green);color:var(--green);box-shadow:0 0 22px #32d17d44}
     .muscleAreaName{font-size:24px;font-weight:950;margin-top:2px}.safetyNote{font-size:13px;color:#c2c3cc;margin:8px 8px 0}
+
+
+    /* Følg rektanglet */
+    .rectangleSvg{width:min(88%,330px);height:auto;overflow:visible}
+    .rectangleTrack{fill:#00e6e608;stroke:#ffffff22;stroke-width:10}
+    .rectangleGuide{fill:none;stroke:var(--cyan);stroke-width:5;stroke-linecap:round;filter:drop-shadow(0 0 8px #00e6e688)}
+    .rectangleDot{fill:#fff;stroke:var(--pink);stroke-width:7;filter:drop-shadow(0 0 10px #ff3aa6) drop-shadow(0 0 18px #ff3aa6)}
+    .rectangleLabels{position:absolute;inset:0;pointer-events:none;font-size:13px;font-weight:900;color:#d9d9e1}
+    .rectangleLabels span{position:absolute;background:#08080dcc;border:1px solid #ffffff20;border-radius:999px;padding:5px 9px}
+    .rectangleLabels .rectTop{top:12%;left:50%;transform:translateX(-50%)}
+    .rectangleLabels .rectRight{right:2%;top:50%;transform:translateY(-50%)}
+    .rectangleLabels .rectBottom{bottom:12%;left:50%;transform:translateX(-50%)}
+    .rectangleLabels .rectLeft{left:2%;top:50%;transform:translateY(-50%)}
+
+    /* Fødderne i gulvet */
+    .feetSvg{width:min(78%,285px);height:auto;overflow:visible}
+    .footShape{fill:#ffffff0b;stroke:#ffffff35;stroke-width:4;transition:fill .28s,stroke .28s,filter .28s,transform .28s;transform-box:fill-box;transform-origin:center}
+    .feetSvg.press .footShape{fill:#ff3aa63d;stroke:var(--pink);filter:drop-shadow(0 0 14px #ff3aa6);transform:scale(.96)}
+    .feetSvg.release .footShape{fill:#32d17d2e;stroke:var(--green);filter:drop-shadow(0 0 13px #32d17d);transform:scale(1.02)}
+    .feetFloor{stroke:#00e6e6;stroke-width:5;stroke-linecap:round;opacity:.65;filter:drop-shadow(0 0 8px #00e6e6)}
+    .roundDots{display:flex;justify-content:center;gap:9px;margin:11px 0 0}.roundDots i{width:13px;height:13px;border-radius:50%;background:#ffffff18;border:1px solid #ffffff30}.roundDots i.done{background:var(--green);border-color:var(--green);box-shadow:0 0 12px #32d17d}.roundDots i.current{background:var(--pink);border-color:var(--pink);box-shadow:0 0 12px #ff3aa6}
+
+    /* Farvejagten */
+    .colorOrb{--hunt-color:#00e6e6;width:min(48vw,190px);height:min(48vw,190px);max-width:190px;max-height:190px;border-radius:50%;margin:auto;background:var(--hunt-color);border:5px solid #ffffff66;box-shadow:0 0 20px var(--hunt-color),0 0 55px var(--hunt-color);animation:colorBreathe 2.3s ease-in-out infinite}
+    @keyframes colorBreathe{0%,100%{transform:scale(.92);opacity:.78}50%{transform:scale(1.04);opacity:1}}
+    .colorSwatches{display:flex;justify-content:center;gap:8px;margin:10px 0}.colorSwatches i{width:25px;height:8px;border-radius:999px;background:#ffffff18;transition:.2s}.colorSwatches i.done{background:var(--swatch);box-shadow:0 0 10px var(--swatch)}.colorSwatches i.current{background:var(--swatch);box-shadow:0 0 16px var(--swatch);transform:scaleY(1.45)}
+    .colorName{font-size:30px;font-weight:950;margin:8px 0 4px}
 
     @media (max-height:720px){
       dialog.exerciseMode .modal{padding:12px}.visualStage{min-height:210px}.bodySvg{height:270px}.handSvg{width:245px}.groundingIcon{font-size:60px}.groundingTarget{font-size:23px}.senseDot{width:45px;height:45px}
@@ -217,6 +244,18 @@
         <div class="exercise">
           <div class="exercisePreview" aria-hidden="true"><svg viewBox="0 0 120 120"><circle cx="60" cy="22" r="12" fill="#ffffff12" stroke="#00e6e6" stroke-width="3"/><path d="M48 37h24l8 28-9 7v33H49V72l-9-7 8-28Z" fill="#ffffff0c" stroke="#00e6e6" stroke-width="3"/><circle cx="43" cy="64" r="7" fill="#ff3aa6"/><circle cx="77" cy="64" r="7" fill="#ff3aa6"/><path d="M51 104v11M69 104v11" stroke="#32d17d" stroke-width="7" stroke-linecap="round"/></svg></div>
           <div class="exerciseCopy"><h3>Spænd og slip</h3><p>Kroppens områder lyser ét ad gangen. Fem sekunder spænding og ti sekunder ro.</p><div class="exerciseActions"><button onclick="startMuscleRelaxation()">Start øvelse</button><button onclick="toggleFavorite('muscle')">⭐ Favorit</button></div></div>
+        </div>
+        <div class="exercise">
+          <div class="exercisePreview" aria-hidden="true"><svg viewBox="0 0 120 120"><rect x="20" y="30" width="80" height="60" rx="13" fill="#00e6e60b" stroke="#00e6e6" stroke-width="4"/><circle cx="20" cy="74" r="7" fill="#fff" stroke="#ff3aa6" stroke-width="4"/><path d="M20 72V31h78" fill="none" stroke="#ffffff55" stroke-width="3" stroke-linecap="round"/></svg></div>
+          <div class="exerciseCopy"><h3>Følg rektanglet</h3><p>Følg lyspunktet: kort side ind, lang side ud. Fem rolige vejrtrækninger.</p><div class="exerciseActions"><button onclick="startRectangleBreathing()">Start øvelse</button><button onclick="toggleFavorite('rectangle')">⭐ Favorit</button></div></div>
+        </div>
+        <div class="exercise">
+          <div class="exercisePreview" aria-hidden="true"><svg viewBox="0 0 120 120"><path d="M43 19c-13 5-19 19-17 34 2 15 11 22 13 37 1 10 7 16 15 14 9-3 10-13 7-23-4-14-2-25 5-38 7-13-7-31-23-24Z" fill="#ff3aa622" stroke="#ff3aa6" stroke-width="3"/><path d="M77 19c13 5 19 19 17 34-2 15-11 22-13 37-1 10-7 16-15 14-9-3-10-13-7-23 4-14 2-25-5-38-7-13 7-31 23-24Z" fill="#32d17d22" stroke="#32d17d" stroke-width="3"/><path d="M22 108h76" stroke="#00e6e6" stroke-width="5" stroke-linecap="round"/></svg></div>
+          <div class="exerciseCopy"><h3>Fødderne i gulvet</h3><p>Pres fødderne roligt ned og slip igen. Tre langsomme gentagelser.</p><div class="exerciseActions"><button onclick="startFeetGrounding()">Start øvelse</button><button onclick="toggleFavorite('feet')">⭐ Favorit</button></div></div>
+        </div>
+        <div class="exercise">
+          <div class="exercisePreview" aria-hidden="true"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="43" fill="#ffffff08" stroke="#ffffff25" stroke-width="3"/><circle cx="60" cy="60" r="29" fill="#00e6e6"/><circle cx="38" cy="38" r="8" fill="#ff3aa6"/><circle cx="83" cy="39" r="8" fill="#ff8a00"/><circle cx="82" cy="82" r="8" fill="#32d17d"/></svg></div>
+          <div class="exerciseCopy"><h3>Farvejagten</h3><p>Find én ting omkring dig i hver af fem farver. Du bestemmer tempoet.</p><div class="exerciseActions"><button onclick="startColorHunt()">Start øvelse</button><button onclick="toggleFavorite('colors')">⭐ Favorit</button></div></div>
         </div>
       </div>
     </section>
@@ -404,9 +443,15 @@ document.querySelectorAll('.subtab').forEach(b=>b.addEventListener('click',()=>{
 }));
 function runExercise(type){
   closeModal();
-  if(type==='breath') startFingerBreathing();
-  else if(type==='grounding') startGrounding();
-  else startMuscleRelaxation();
+  const runners={
+    breath:startFingerBreathing,
+    grounding:startGrounding,
+    muscle:startMuscleRelaxation,
+    rectangle:startRectangleBreathing,
+    feet:startFeetGrounding,
+    colors:startColorHunt
+  };
+  if(runners[type]) runners[type]();
 }
 
 let exerciseTimer=null;
@@ -612,6 +657,165 @@ function finishMuscleArea(){
 }
 function skipMuscleArea(){if(exerciseTimer){clearInterval(exerciseTimer);exerciseTimer=null}finishMuscleArea()}
 
+
+/* 4: Følg rektanglet */
+function startRectangleBreathing(){
+  prepareExerciseModal('Visuel øvelse','Følg rektanglet');
+  document.getElementById('modalContent').innerHTML=`
+    <div class="visualExercise">
+      <p class="exerciseLead">Følg lyspunktet. De korte sider er indånding, og de lange sider er udånding.</p>
+      <div class="exerciseProgress"><i id="rectangleProgress"></i></div>
+      <div class="exerciseStatus" id="rectangleStatus">Gør dig klar</div>
+      <p class="exerciseSub" id="rectangleSub">Lad vejrtrækningen være rolig og uforceret.</p>
+      <div class="visualStage">
+        <svg class="rectangleSvg" viewBox="0 0 360 260" role="img" aria-label="Afrundet rektangel med et lyspunkt, der viser vejrtrækningens rytme">
+          <rect class="rectangleTrack" x="55" y="45" width="250" height="170" rx="38"/>
+          <path class="rectangleGuide" d="M55 177V83Q55 45 93 45H267Q305 45 305 83V177Q305 215 267 215H93Q55 215 55 177Z"/>
+          <path id="rectSegment0" d="M55 177V83Q55 45 93 45" fill="none" stroke="transparent"/>
+          <path id="rectSegment1" d="M93 45H267Q305 45 305 83" fill="none" stroke="transparent"/>
+          <path id="rectSegment2" d="M305 83V177Q305 215 267 215" fill="none" stroke="transparent"/>
+          <path id="rectSegment3" d="M267 215H93Q55 215 55 177" fill="none" stroke="transparent"/>
+          <circle id="rectangleDot" class="rectangleDot" cx="55" cy="177" r="10"/>
+        </svg>
+        <div class="rectangleLabels"><span class="rectTop">UD</span><span class="rectRight">IND</span><span class="rectBottom">UD</span><span class="rectLeft">IND</span></div>
+      </div>
+      <div class="fingerCount" id="rectangleCount">${'<i></i>'.repeat(5)}</div>
+      <div class="visualControls"><button class="primary" id="exercisePause" onclick="toggleExercisePause()">Pause</button><button class="secondary" onclick="startRectangleBreathing()">Start forfra</button><button class="secondary" onclick="closeModal()">Stop</button></div>
+    </div>`;
+  animateRectangleBreathing();
+}
+function animateRectangleBreathing(){
+  const dot=document.getElementById('rectangleDot');
+  const status=document.getElementById('rectangleStatus');
+  const sub=document.getElementById('rectangleSub');
+  const progress=document.getElementById('rectangleProgress');
+  if(!dot)return;
+  const phases=[
+    {pathId:'rectSegment0',name:'IND',text:'Træk vejret roligt ind',duration:3000},
+    {pathId:'rectSegment1',name:'UD',text:'Pust langsomt ud',duration:5000},
+    {pathId:'rectSegment2',name:'IND',text:'Træk vejret roligt ind',duration:3000},
+    {pathId:'rectSegment3',name:'UD',text:'Pust langsomt ud',duration:5000}
+  ];
+  const totalPhases=10;
+  let phaseIndex=0,phaseStart=performance.now();
+  pausedTotal=0;pauseStarted=0;exercisePaused=false;
+  function frame(now){
+    if(!document.getElementById('rectangleDot'))return;
+    if(exercisePaused){exerciseAnimation=requestAnimationFrame(frame);return}
+    const phase=phases[phaseIndex%phases.length];
+    const segment=document.getElementById(phase.pathId);
+    if(!segment)return;
+    const elapsed=now-(phaseStart+pausedTotal);
+    const ratio=Math.min(1,Math.max(0,elapsed/phase.duration));
+    const point=segment.getPointAtLength(segment.getTotalLength()*ratio);
+    dot.setAttribute('cx',point.x);dot.setAttribute('cy',point.y);
+    status.textContent=phase.name;
+    sub.textContent=phase.text+(phase.name==='UD'?' – lidt længere end indåndingen.':'.');
+    const overall=(phaseIndex+ratio)/totalPhases;
+    progress.style.width=(overall*100)+'%';
+    document.querySelectorAll('#rectangleCount i').forEach((el,i)=>el.classList.toggle('done',i<Math.floor(phaseIndex/2)));
+    if(ratio>=1){
+      phaseIndex++;phaseStart=now;pausedTotal=0;pauseStarted=0;
+      if(phaseIndex>=totalPhases){
+        status.textContent='Færdig';sub.textContent='Lad vejrtrækningen finde sin egen rytme igen.';
+        progress.style.width='100%';document.querySelectorAll('#rectangleCount i').forEach(el=>el.classList.add('done'));return;
+      }
+    }
+    exerciseAnimation=requestAnimationFrame(frame);
+  }
+  exerciseAnimation=requestAnimationFrame(frame);
+}
+
+/* 5: Fødderne i gulvet */
+let feetRound=0,feetPhase='ready',feetRemaining=0;
+function startFeetGrounding(){
+  feetRound=0;feetPhase='ready';feetRemaining=0;
+  prepareExerciseModal('Visuel øvelse','Fødderne i gulvet');
+  renderFeetGrounding();
+}
+function feetSvgMarkup(){return `<svg class="feetSvg" id="feetSvg" viewBox="0 0 300 330" role="img" aria-label="To fodaftryk, der lyser under pres og afspænding">
+  <path class="footShape" d="M79 35C45 48 32 84 39 125c7 40 28 57 35 95 5 29 22 47 44 39 24-8 27-35 17-62-13-35-10-64 8-98 18-35-24-80-64-64Z"/>
+  <circle class="footShape" cx="55" cy="55" r="13"/><circle class="footShape" cx="69" cy="31" r="11"/><circle class="footShape" cx="88" cy="20" r="10"/><circle class="footShape" cx="108" cy="19" r="9"/><circle class="footShape" cx="126" cy="28" r="8"/>
+  <path class="footShape" d="M221 35c34 13 47 49 40 90-7 40-28 57-35 95-5 29-22 47-44 39-24-8-27-35-17-62 13-35 10-64-8-98-18-35 24-80 64-64Z"/>
+  <circle class="footShape" cx="245" cy="55" r="13"/><circle class="footShape" cx="231" cy="31" r="11"/><circle class="footShape" cx="212" cy="20" r="10"/><circle class="footShape" cx="192" cy="19" r="9"/><circle class="footShape" cx="174" cy="28" r="8"/>
+  <path class="feetFloor" d="M38 292H262"/>
+</svg>`}
+function renderFeetGrounding(){
+  document.getElementById('modalContent').innerHTML=`
+    <div class="visualExercise">
+      <div class="exerciseProgress"><i id="feetProgress"></i></div>
+      <div class="exerciseStatus" id="feetStatus">Tre rolige gentagelser</div>
+      <p class="exerciseSub" id="feetInstruction">Sæt begge fødder i gulvet. Tryk start, når du er klar.</p>
+      <div class="visualStage"><div class="countRing" id="feetCount">–</div>${feetSvgMarkup()}</div>
+      <div class="roundDots" id="feetRounds">${'<i></i>'.repeat(3)}</div>
+      <div class="visualControls"><button class="primary" id="feetMain" onclick="beginFeetGrounding()">Start</button><button class="secondary" onclick="startFeetGrounding()">Start forfra</button><button class="secondary" onclick="closeModal()">Stop</button></div>
+    </div>`;
+}
+function beginFeetGrounding(){
+  if(exerciseTimer)clearInterval(exerciseTimer);
+  exercisePaused=false;feetRound=0;feetPhase='press';feetRemaining=5;
+  const main=document.getElementById('feetMain');if(main){main.textContent='Pause';main.onclick=toggleFeetPause}
+  updateFeetGrounding();
+  exerciseTimer=setInterval(()=>{
+    if(exercisePaused)return;
+    feetRemaining--;
+    if(feetRemaining<=0){
+      if(feetPhase==='press'){feetPhase='release';feetRemaining=10}
+      else{
+        feetRound++;
+        if(feetRound>=3){clearInterval(exerciseTimer);exerciseTimer=null;finishFeetGrounding();return}
+        feetPhase='press';feetRemaining=5;
+      }
+    }
+    updateFeetGrounding();
+  },1000);
+}
+function toggleFeetPause(){exercisePaused=!exercisePaused;const main=document.getElementById('feetMain');if(main)main.textContent=exercisePaused?'Fortsæt':'Pause'}
+function updateFeetGrounding(){
+  const pressing=feetPhase==='press';
+  const status=document.getElementById('feetStatus'),instruction=document.getElementById('feetInstruction'),count=document.getElementById('feetCount'),svg=document.getElementById('feetSvg');
+  if(status)status.textContent=pressing?'PRES FORSIGTIGT':'SLIP TRYKKET';
+  if(instruction)instruction.textContent=pressing?'Pres begge fødder roligt mod gulvet.':'Slip igen og mærk hæle, fodsåler og tæer mod underlaget.';
+  if(count){count.textContent=feetRemaining;count.className='countRing '+(pressing?'tense':'relax')}
+  if(svg)svg.className.baseVal='feetSvg '+(pressing?'press':'release');
+  document.querySelectorAll('#feetRounds i').forEach((el,i)=>{el.classList.toggle('done',i<feetRound);el.classList.toggle('current',i===feetRound)});
+  const phasePart=pressing?(5-feetRemaining)/15:(5+(10-feetRemaining))/15;
+  const progress=document.getElementById('feetProgress');if(progress)progress.style.width=((feetRound+phasePart)/3*100)+'%';
+  if(navigator.vibrate&&feetRemaining===1)navigator.vibrate(25);
+}
+function finishFeetGrounding(){
+  document.getElementById('modalContent').innerHTML=`<div class="visualExercise"><div class="exerciseProgress"><i style="width:100%"></i></div><div class="visualStage"><div><div class="groundingDone">✓</div><div class="groundingTarget">Du er færdig</div><p class="exerciseLead">Bliv siddende et øjeblik og mærk kontakten mellem fødderne og gulvet.</p></div></div><div class="visualControls"><button class="primary" onclick="startFeetGrounding()">Start forfra</button><button class="secondary" onclick="closeModal()">Luk</button></div></div>`;
+}
+
+/* 6: Farvejagten */
+const colorHuntData=[
+  {name:'BLÅT',color:'#2897ff',hint:'Find noget blåt. Se på formen og nuancen.'},
+  {name:'GRØNT',color:'#32d17d',hint:'Find noget grønt. Læg mærke til, om det er lyst eller mørkt.'},
+  {name:'RØDT',color:'#ff4f61',hint:'Find noget rødt. Se på overfladen og størrelsen.'},
+  {name:'GULT',color:'#ffd447',hint:'Find noget gult. Hold blikket på det et øjeblik.'},
+  {name:'HVIDT',color:'#f5f5f7',hint:'Find noget hvidt eller meget lyst omkring dig.'}
+];
+let colorHuntIndex=0;
+function startColorHunt(){colorHuntIndex=0;prepareExerciseModal('Visuel øvelse','Farvejagten');renderColorHunt()}
+function renderColorHunt(){
+  const content=document.getElementById('modalContent');
+  if(colorHuntIndex>=colorHuntData.length){
+    content.innerHTML=`<div class="visualExercise"><div class="exerciseProgress"><i style="width:100%"></i></div><div class="visualStage"><div><div class="groundingDone">✓</div><div class="groundingTarget">Fem farver fundet</div><p class="exerciseLead">Se på den sidste ting i fem sekunder. Læg mærke til form, farve og overflade.</p></div></div><div class="visualControls"><button class="primary" onclick="startColorHunt()">Start forfra</button><button class="secondary" onclick="closeModal()">Luk</button></div></div>`;return;
+  }
+  const step=colorHuntData[colorHuntIndex];
+  content.innerHTML=`
+    <div class="visualExercise">
+      <div class="exerciseProgress"><i style="width:${(colorHuntIndex/colorHuntData.length)*100}%"></i></div>
+      <div class="colorSwatches">${colorHuntData.map((c,i)=>`<i class="${i<colorHuntIndex?'done':i===colorHuntIndex?'current':''}" style="--swatch:${c.color}"></i>`).join('')}</div>
+      <div class="exerciseStatus">Farve ${colorHuntIndex+1} af ${colorHuntData.length}</div>
+      <p class="exerciseSub">Se roligt rundt i det rum eller område, du befinder dig i.</p>
+      <div class="visualStage"><div><div class="colorOrb" style="--hunt-color:${step.color}"></div><div class="colorName" style="color:${step.color}">${step.name}</div><p class="exerciseLead">${step.hint}</p></div></div>
+      <div class="visualControls"><button class="primary" onclick="foundColorHunt()">Fundet</button><button class="secondary" onclick="skipColorHunt()">Spring over</button><button class="secondary" onclick="closeModal()">Stop</button></div>
+    </div>`;
+}
+function foundColorHunt(){if(navigator.vibrate)navigator.vibrate(20);colorHuntIndex++;renderColorHunt()}
+function skipColorHunt(){colorHuntIndex++;renderColorHunt()}
+
 const trackNames=Object.entries(symptoms).map(([id,o])=>[id,o.title.split(':')[0]]);const grid=document.getElementById('trackerGrid');trackNames.forEach(([id,name])=>{const lab=document.createElement('label');lab.className='check';lab.innerHTML=`<input type="checkbox" value="${id}"><span>${name}</span>`;grid.appendChild(lab)});
 function storageGet(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch(e){return fallback}}
 function storageSet(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch(e){return false}}
@@ -625,7 +829,7 @@ function saveTracker(){
   document.getElementById('trackerResult').textContent=saved?`Gemt.\n\nHyppigste symptomer på denne enhed:\n${top}`:'Kunne ikke gemme. Tjek at lokal lagring ikke er blokeret i din browser (fx privat/inkognito-tilstand).';
 }
 
-const exerciseCatalog={breath:{name:'Finger-vejrtrækning',run:'startFingerBreathing()'},grounding:{name:'5-4-3-2-1 grounding',run:'startGrounding()'},muscle:{name:'Spænd og slip',run:'startMuscleRelaxation()'}};
+const exerciseCatalog={breath:{name:'Finger-vejrtrækning',run:'startFingerBreathing()'},grounding:{name:'5-4-3-2-1 grounding',run:'startGrounding()'},muscle:{name:'Spænd og slip',run:'startMuscleRelaxation()'},rectangle:{name:'Følg rektanglet',run:'startRectangleBreathing()'},feet:{name:'Fødderne i gulvet',run:'startFeetGrounding()'},colors:{name:'Farvejagten',run:'startColorHunt()'}};
 function getFavs(){return storageGet('angstFavs',[])}
 function toggleFavorite(id){let favs=getFavs();favs=favs.includes(id)?favs.filter(x=>x!==id):[...favs,id];storageSet('angstFavs',favs);renderFavs()}
 function renderFavs(){const el=document.getElementById('favList');if(!el)return;const favs=getFavs();if(!favs.length){el.innerHTML='<p class="muted">Ingen favoritter endnu.</p>';return}el.innerHTML=favs.map(id=>`<div class="favItem"><span>⭐ ${exerciseCatalog[id].name}</span><button class="miniBtn" onclick="${exerciseCatalog[id].run}">Start</button></div>`).join('')}
@@ -698,7 +902,7 @@ updateInstallButton();
 
     window.addEventListener('load', async () => {
       try {
-        const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260619-03', { updateViaCache: 'none' });
+        const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260619-04', { updateViaCache: 'none' });
 
         const forceNewWorker = worker => {
           if (!worker) return;
